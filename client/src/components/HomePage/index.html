@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../libs/m-style/style.css">
+    <title>Gapo</title>
+</head>
+<body>
+    <div class="container">
+        <header class="box-shadow">
+            <div class="h-100 d-flex align-items-center">
+                <div class="h-100 d-flex align-items-center">
+                    <img height="30px" src="https://www.gapo.vn/assets/images/logo.svg" alt="">
+                </div>
+
+                <div class="h-50 mx-1 d-inline-flex border"></div>
+
+                <div class="h-100 position-relative d-flex align-items-center">
+                    <input type="search" class="circle form-control rounded-pill header-search" placeholder="Tìm kiếm">
+                    <i class="position-absolute text-secondary top-50 left-20px translate-50 cursor-pointer fas fa-search"></i>
+                    <div class="card position-absolute top-100 bg-light text-wrap rounded border z-index-99 transition-03 search--results-box">
+                        <p class="p-3 fw-6">Kết quả tìm kiếm</p>
+                        <div class="mt-3 border"></div>
+                        <div class="p-3 search--results"></div>
+                    </div>
+                </div>
+                
+                <ul class="h-100 col-0 col-xl-6  d-flex justify-content-center position-absolute position-center">
+                    <li class="h-100 pt-2 pb-1 col d-flex align-items-center cursor-pointer header-menu-index header-menu--selected">
+                        <div class="d-list-item mx-auto">
+                            <span class="mb-5 d-flex justify-content-center">
+                                <img class="header-menu-type--active d-unset" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUuODE4MTUgMTMuODE4MUwxNS42MzYyIDQuNTQ1NDdMMjUuNDU0MyAxMy44MTgxTDI0LjkwODkgMjcuNDU0NEg1LjgxODE1VjEzLjgxODFaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjEuNjcyMiAxMC44MTgzVjIzLjA5MDlDMjEuNjcyMiAyMy4yMzU2IDIxLjYxNDcgMjMuMzc0MyAyMS41MTI0IDIzLjQ3NjZDMjEuNDEwMSAyMy41Nzg5IDIxLjI3MTQgMjMuNjM2NCAyMS4xMjY3IDIzLjYzNjRINi4zNjM1OVYyNi4zNjM2QzYuMzYzNTkgMjYuNTA4MyA2LjQyMTA1IDI2LjY0NyA2LjUyMzM1IDI2Ljc0OTNDNi42MjU2NCAyNi44NTE2IDYuNzY0MzcgMjYuOTA5MSA2LjkwOTA0IDI2LjkwOTFIMjQuMzYzNEMyNC41MDgxIDI2LjkwOTEgMjQuNjQ2OCAyNi44NTE2IDI0Ljc0OTEgMjYuNzQ5M0MyNC44NTE0IDI2LjY0NyAyNC45MDg5IDI2LjUwODMgMjQuOTA4OSAyNi4zNjM2VjEzLjgxODNIMjQuOTQ0OEwyMS42NzIyIDEwLjgxODNaIiBmaWxsPSIjQ0RFOUJFIi8+CjxwYXRoIGQ9Ik0yOS4wOTU3IDE2LjE0MjlMMTYuMDA0OSA0LjE0MzAyQzE1LjkwNDIgNC4wNTEwMSAxNS43NzI3IDQgMTUuNjM2MyA0QzE1LjQ5OTkgNCAxNS4zNjg0IDQuMDUxMDEgMTUuMjY3NyA0LjE0MzAyTDIuMTc2OTIgMTYuMTQyOUMyLjA3MDI2IDE2LjI0MDcgMi4wMDY4MSAxNi4zNzY4IDIuMDAwNTIgMTYuNTIxM0MxLjk5NDIzIDE2LjY2NTkgMi4wNDU2MSAxNi44MDcgMi4xNDMzOCAxNi45MTM3QzIuMjQxMTQgMTcuMDIwMyAyLjM3NzI3IDE3LjA4MzggMi41MjE4MiAxNy4wOTAxQzIuNjY2MzYgMTcuMDk2NCAyLjgwNzQ5IDE3LjA0NSAyLjkxNDE1IDE2Ljk0NzJMNS4yNzI4OSAxNC43ODUxVjI2LjM2MzdDNS4yNzI4OSAyNi43OTc2IDUuNDQ1MjkgMjcuMjEzOSA1Ljc1MjE3IDI3LjUyMDdDNi4wNTkwNCAyNy44Mjc2IDYuNDc1MjYgMjggNi45MDkyNCAyOEgyNC4zNjM2QzI0Ljc5NzYgMjggMjUuMjEzOCAyNy44Mjc2IDI1LjUyMDcgMjcuNTIwN0MyNS44Mjc2IDI3LjIxMzkgMjYgMjYuNzk3NiAyNiAyNi4zNjM3VjE0Ljc4NTZMMjguMzU4NSAxNi45NDcxQzI4LjQ2NTIgMTcuMDQ0OSAyOC42MDYzIDE3LjA5NjMgMjguNzUwOCAxNy4wOUMyOC44OTU0IDE3LjA4MzcgMjkuMDMxNSAxNy4wMjAyIDI5LjEyOTMgMTYuOTEzNkMyOS4yMjcgMTYuODA2OSAyOS4yNzg0IDE2LjY2NTggMjkuMjcyMSAxNi41MjEyQzI5LjI2NTggMTYuMzc2NyAyOS4yMDI0IDE2LjI0MDYgMjkuMDk1NyAxNi4xNDI4VjE2LjE0MjlaTTI0LjkwOTEgMTMuODE4M1YyNi4zNjM3QzI0LjkwOTEgMjYuNTA4MyAyNC44NTE2IDI2LjY0NzEgMjQuNzQ5MyAyNi43NDkzQzI0LjY0NyAyNi44NTE2IDI0LjUwODMgMjYuOTA5MSAyNC4zNjM2IDI2LjkwOTFINi45MDkyNEM2Ljc2NDU4IDI2LjkwOTEgNi42MjU4NCAyNi44NTE2IDYuNTIzNTUgMjYuNzQ5M0M2LjQyMTI2IDI2LjY0NzEgNi4zNjM3OSAyNi41MDgzIDYuMzYzNzkgMjYuMzYzN1YxMy44MTgzSDYuMzI3NzlMMTUuNjM2NCA1LjI4NDk3TDI0Ljk0NSAxMy44MTgzSDI0LjkwOTFaIiBmaWxsPSIjNkZCRTQ5IiBzdHJva2U9IiM2RkJFNDkiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjwvc3ZnPgo=" alt="">
+                                <img class="header-menu-type--default d-none" src="https://www.gapo.vn/assets/icons/home-default.svg">
+                            </span>
+                            <p class="fs-09 text-nowrap">Trang chủ</p>
+                        </div>
+                    </li>
+
+                    <li class="h-100 pt-2 pb-1 col d-flex align-items-center cursor-pointer pointer-events-none header-menu">
+                        <div class="d-list-item mx-auto">
+                            <span class="mb-5 d-flex justify-content-center">
+                                <img class="header-menu-type-true" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgMjZWMTYuNUM0IDE2LjM2NzQgNC4wNTI2OCAxNi4yNDAyIDQuMTQ2NDUgMTYuMTQ2NEM0LjI0MDIxIDE2LjA1MjcgNC4zNjczOSAxNiA0LjUgMTZIOFYyNkM4IDI2LjUzMDQgNy43ODkyOSAyNy4wMzkxIDcuNDE0MjEgMjcuNDE0MkM3LjAzOTE0IDI3Ljc4OTMgNi41MzA0MyAyOCA2IDI4QzUuNDY5NTcgMjggNC45NjA4NiAyNy43ODkzIDQuNTg1NzkgMjcuNDE0MkM0LjIxMDcxIDI3LjAzOTEgNCAyNi41MzA0IDQgMjZaIiBmaWxsPSIjRTVFNUU1Ii8+CjxwYXRoIGQ9Ik0yNi41IDVIMjUuNzc4NlYyMy41QzI1Ljc3NzUgMjQuNDI3OSAyNS40MDg0IDI1LjMxNzUgMjQuNzUyMyAyNS45NzM2QzI0LjA5NjEgMjYuNjI5OCAyMy4yMDY1IDI2Ljk5ODkgMjIuMjc4NiAyN0g4LjgxNjgxQzguNjg0NDYgMjcuMzY4NSA4LjQ4MjMgMjcuNzA4IDguMjIxNDEgMjhIMjMuNUMyNC40Mjc5IDI3Ljk5ODkgMjUuMzE3NSAyNy42Mjk4IDI1Ljk3MzcgMjYuOTczNkMyNi42Mjk4IDI2LjMxNzUgMjYuOTk4OSAyNS40Mjc5IDI3IDI0LjVWNS41QzI3IDUuMzY3MzkgMjYuOTQ3MyA1LjI0MDIxIDI2Ljg1MzYgNS4xNDY0NUMyNi43NTk4IDUuMDUyNjggMjYuNjMyNiA1IDI2LjUgNVoiIGZpbGw9IiNFNUU1RTUiLz4KPHBhdGggZD0iTTIzLjUgMTZIMTIuNUMxMi4zNjc0IDE2IDEyLjI0MDIgMTYuMDUyNyAxMi4xNDY0IDE2LjE0NjRDMTIuMDUyNyAxNi4yNDAyIDEyIDE2LjM2NzQgMTIgMTYuNUMxMiAxNi42MzI2IDEyLjA1MjcgMTYuNzU5OCAxMi4xNDY0IDE2Ljg1MzZDMTIuMjQwMiAxNi45NDczIDEyLjM2NzQgMTcgMTIuNSAxN0gyMy41QzIzLjYzMjYgMTcgMjMuNzU5OCAxNi45NDczIDIzLjg1MzYgMTYuODUzNkMyMy45NDczIDE2Ljc1OTggMjQgMTYuNjMyNiAyNCAxNi41QzI0IDE2LjM2NzQgMjMuOTQ3MyAxNi4yNDAyIDIzLjg1MzYgMTYuMTQ2NEMyMy43NTk4IDE2LjA1MjcgMjMuNjMyNiAxNiAyMy41IDE2WiIgZmlsbD0iIzRENEQ0RCIgc3Ryb2tlPSIjNEQ0RDREIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cGF0aCBkPSJNMjMuNSAyMEgxMi41QzEyLjM2NzQgMjAgMTIuMjQwMiAyMC4wNTI3IDEyLjE0NjQgMjAuMTQ2NEMxMi4wNTI3IDIwLjI0MDIgMTIgMjAuMzY3NCAxMiAyMC41QzEyIDIwLjYzMjYgMTIuMDUyNyAyMC43NTk4IDEyLjE0NjQgMjAuODUzNkMxMi4yNDAyIDIwLjk0NzMgMTIuMzY3NCAyMSAxMi41IDIxSDIzLjVDMjMuNjMyNiAyMSAyMy43NTk4IDIwLjk0NzMgMjMuODUzNiAyMC44NTM2QzIzLjk0NzMgMjAuNzU5OCAyNCAyMC42MzI2IDI0IDIwLjVDMjQgMjAuMzY3NCAyMy45NDczIDIwLjI0MDIgMjMuODUzNiAyMC4xNDY0QzIzLjc1OTggMjAuMDUyNyAyMy42MzI2IDIwIDIzLjUgMjBaIiBmaWxsPSIjNEQ0RDREIiBzdHJva2U9IiM0RDRENEQiIHN0cm9rZS13aWR0aD0iMC41Ii8+CjxwYXRoIGQ9Ik0yMC41IDI0SDEyLjVDMTIuMzY3NCAyNCAxMi4yNDAyIDI0LjA1MjcgMTIuMTQ2NCAyNC4xNDY0QzEyLjA1MjcgMjQuMjQwMiAxMiAyNC4zNjc0IDEyIDI0LjVDMTIgMjQuNjMyNiAxMi4wNTI3IDI0Ljc1OTggMTIuMTQ2NCAyNC44NTM2QzEyLjI0MDIgMjQuOTQ3MyAxMi4zNjc0IDI1IDEyLjUgMjVIMjAuNUMyMC42MzI2IDI1IDIwLjc1OTggMjQuOTQ3MyAyMC44NTM2IDI0Ljg1MzZDMjAuOTQ3MyAyNC43NTk4IDIxIDI0LjYzMjYgMjEgMjQuNUMyMSAyNC4zNjc0IDIwLjk0NzMgMjQuMjQwMiAyMC44NTM2IDI0LjE0NjRDMjAuNzU5OCAyNC4wNTI3IDIwLjYzMjYgMjQgMjAuNSAyNFoiIGZpbGw9IiM0RDRENEQiIHN0cm9rZT0iIzRENEQ0RCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHBhdGggZD0iTTIzIDhIMTNDMTIuNzM0OCA4IDEyLjQ4MDQgOC4xMDUzNiAxMi4yOTI5IDguMjkyODlDMTIuMTA1NCA4LjQ4MDQzIDEyIDguNzM0NzggMTIgOVYxMkMxMiAxMi4yNjUyIDEyLjEwNTQgMTIuNTE5NiAxMi4yOTI5IDEyLjcwNzFDMTIuNDgwNCAxMi44OTQ2IDEyLjczNDggMTMgMTMgMTNIMjNDMjMuMjY1MiAxMyAyMy41MTk2IDEyLjg5NDYgMjMuNzA3MSAxMi43MDcxQzIzLjg5NDYgMTIuNTE5NiAyNCAxMi4yNjUyIDI0IDEyVjlDMjQgOC43MzQ3OCAyMy44OTQ2IDguNDgwNDMgMjMuNzA3MSA4LjI5Mjg5QzIzLjUxOTYgOC4xMDUzNiAyMy4yNjUyIDggMjMgOFpNMjMgMTJIMTNWOUgyM1YxMloiIGZpbGw9IiM0RDRENEQiIHN0cm9rZT0iIzRENEQ0RCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHBhdGggZD0iTTI2LjUgNEg5LjVDOS4xMDIzMSA0LjAwMDQyIDguNzIxMDIgNC4xNTg1OSA4LjQzOTgxIDQuNDM5ODFDOC4xNTg1OSA0LjcyMTAyIDguMDAwNDIgNS4xMDIzMSA4IDUuNVYxNUg0LjVDNC4xMDIzMSAxNS4wMDA0IDMuNzIxMDIgMTUuMTU4NiAzLjQzOTgxIDE1LjQzOThDMy4xNTg1OSAxNS43MjEgMy4wMDA0MiAxNi4xMDIzIDMgMTYuNVYyNkMzIDI2Ljc5NTYgMy4zMTYwNyAyNy41NTg3IDMuODc4NjggMjguMTIxM0M0LjQ0MTI5IDI4LjY4MzkgNS4yMDQzNSAyOSA2IDI5SDIzLjVDMjQuNjkzMSAyOC45OTg3IDI1LjgzNjkgMjguNTI0MiAyNi42ODA1IDI3LjY4MDVDMjcuNTI0MiAyNi44MzY5IDI3Ljk5ODcgMjUuNjkzMSAyOCAyNC41VjUuNUMyNy45OTk2IDUuMTAyMzEgMjcuODQxNCA0LjcyMTAyIDI3LjU2MDIgNC40Mzk4MUMyNy4yNzkgNC4xNTg1OSAyNi44OTc3IDQuMDAwNDIgMjYuNSA0VjRaTTQgMjZWMTYuNUM0IDE2LjM2NzQgNC4wNTI2OCAxNi4yNDAyIDQuMTQ2NDUgMTYuMTQ2NEM0LjI0MDIxIDE2LjA1MjcgNC4zNjczOSAxNiA0LjUgMTZIOFYyNkM4IDI2LjUzMDQgNy43ODkyOSAyNy4wMzkxIDcuNDE0MjEgMjcuNDE0MkM3LjAzOTE0IDI3Ljc4OTMgNi41MzA0MyAyOCA2IDI4QzUuNDY5NTcgMjggNC45NjA4NiAyNy43ODkzIDQuNTg1NzkgMjcuNDE0MkM0LjIxMDcxIDI3LjAzOTEgNCAyNi41MzA0IDQgMjZaTTI3IDI0LjVDMjYuOTk4OSAyNS40Mjc5IDI2LjYyOTggMjYuMzE3NSAyNS45NzM2IDI2Ljk3MzZDMjUuMzE3NSAyNy42Mjk4IDI0LjQyNzkgMjcuOTk4OSAyMy41IDI4SDguMjIxNEM4LjcyMDUyIDI3LjQ1MzMgOC45OTgxMSAyNi43NDAzIDkgMjZWNS41QzkgNS4zNjczOSA5LjA1MjY4IDUuMjQwMjEgOS4xNDY0NSA1LjE0NjQ1QzkuMjQwMjEgNS4wNTI2OCA5LjM2NzM5IDUgOS41IDVIMjYuNUMyNi42MzI2IDUgMjYuNzU5OCA1LjA1MjY4IDI2Ljg1MzYgNS4xNDY0NUMyNi45NDczIDUuMjQwMjEgMjcgNS4zNjczOSAyNyA1LjVWMjQuNVoiIGZpbGw9IiM0RDRENEQiIHN0cm9rZT0iIzRENEQ0RCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPC9zdmc+Cg==" alt="">
+                            </span>
+                            <p class="fs-09 text-nowrap">Tin tức</p>
+                        </div>
+                    </li>
+
+                    <li class="h-100 pt-2 pb-1 col d-flex align-items-center cursor-pointer header-menu-groups">
+                        <div class="d-list-item mx-auto">
+                            <span class="mb-5 d-flex justify-content-center">
+                                <img class="header-menu-type--default" src="https://www.gapo.vn/assets/icons/group-default.svg" alt="">
+                                <img class="header-menu-type--active d-none" src="https://www.gapo.vn/assets/icons/group-active.svg" alt="">
+                            </span>
+                            <p class="fs-09 text-nowrap">Nhóm</p>
+                        </div>
+                    </li>
+
+                    <li class="h-100 pt-2 pb-1 col d-flex align-items-center cursor-pointer pointer-events-none header-menu">
+                        <div class="d-list-item mx-auto">
+                            <span class="mb-5 d-flex justify-content-center">
+                                <img class="header-menu-type" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI2LjA1NDggNS4yMjUyOFYyMy42MDQySDUuMjI1MjhWMjEuMTUzN0wyMi4yMDM5IDIwLjAxNlY1LjIyNTI4SDI2LjA1NDhaIiBmaWxsPSIjRTZFNkU2Ii8+CjxwYXRoIGQ9Ik0yNS40NDIxIDRINS44Mzc5M0M1LjM1MDQ5IDQgNC44ODMwMSA0LjE5MzYzIDQuNTM4MzQgNC41MzgzMUM0LjE5MzY3IDQuODgyOTggNC4wMDAwMyA1LjM1MDQ1IDQuMDAwMDMgNS44Mzc4OVYyMi45OTE2QzQuMDAwMDMgMjMuNDc5IDQuMTkzNjcgMjMuOTQ2NSA0LjUzODM0IDI0LjI5MTJDNC44ODMwMSAyNC42MzU4IDUuMzUwNDkgMjQuODI5NSA1LjgzNzkzIDI0LjgyOTVIMjUuNDQyMUMyNS45Mjk2IDI0LjgyOTUgMjYuMzk3MSAyNC42MzU4IDI2Ljc0MTcgMjQuMjkxMkMyNy4wODY0IDIzLjk0NjUgMjcuMjggMjMuNDc5IDI3LjI4IDIyLjk5MTZWNS44Mzc4OUMyNy4yOCA1LjM1MDQ1IDI3LjA4NjQgNC44ODI5OCAyNi43NDE3IDQuNTM4MzFDMjYuMzk3MSA0LjE5MzYzIDI1LjkyOTYgNCAyNS40NDIxIDRaTTI2LjA1NDggMjIuOTkxNkMyNi4wNTQ4IDIzLjE1NDEgMjUuOTkwMiAyMy4zMDk5IDI1Ljg3NTMgMjMuNDI0OEMyNS43NjA0IDIzLjUzOTcgMjUuNjA0NiAyMy42MDQyIDI1LjQ0MjEgMjMuNjA0Mkg1LjgzNzkzQzUuNjc1NDUgMjMuNjA0MiA1LjUxOTYyIDIzLjUzOTcgNS40MDQ3MyAyMy40MjQ4QzUuMjg5ODQgMjMuMzA5OSA1LjIyNTI5IDIzLjE1NDEgNS4yMjUyOSAyMi45OTE2VjUuODM3ODlDNS4yMjUyOSA1LjY3NTQxIDUuMjg5ODQgNS41MTk1OSA1LjQwNDczIDUuNDA0N0M1LjUxOTYyIDUuMjg5ODEgNS42NzU0NSA1LjIyNTI2IDUuODM3OTMgNS4yMjUyNkgyNS40NDIxQzI1LjYwNDYgNS4yMjUyNiAyNS43NjA0IDUuMjg5ODEgMjUuODc1MyA1LjQwNDdDMjUuOTkwMiA1LjUxOTU5IDI2LjA1NDggNS42NzU0MSAyNi4wNTQ4IDUuODM3ODlWMjIuOTkxNloiIGZpbGw9IiM0RDRENEQiIHN0cm9rZT0iIzRENEQ0RCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHBhdGggZD0iTTIzLjYwNDIgMjcuODkyNkMyMy42MDQyIDI3LjczMDIgMjMuNTM5NyAyNy41NzQzIDIzLjQyNDggMjcuNDU5NEMyMy4zMDk5IDI3LjM0NDUgMjMuMTU0MSAyNy4yOCAyMi45OTE2IDI3LjI4TDguMjg4NDMgMjcuMjhDOC4xMjU5NSAyNy4yOCA3Ljk3MDEyIDI3LjM0NDUgNy44NTUyMyAyNy40NTk0QzcuNzQwMzQgMjcuNTc0MyA3LjY3NTggMjcuNzMwMiA3LjY3NTggMjcuODkyNkM3LjY3NTggMjguMDU1MSA3Ljc0MDM0IDI4LjIxMDkgNy44NTUyMyAyOC4zMjU4QzcuOTcwMTIgMjguNDQwNyA4LjEyNTk1IDI4LjUwNTMgOC4yODg0MyAyOC41MDUzTDIyLjk5MTYgMjguNTA1M0MyMy4xNTQxIDI4LjUwNTMgMjMuMzA5OSAyOC40NDA3IDIzLjQyNDggMjguMzI1OEMyMy41Mzk3IDI4LjIxMDkgMjMuNjA0MiAyOC4wNTUxIDIzLjYwNDIgMjcuODkyNloiIGZpbGw9IiM0RDRENEQiIHN0cm9rZT0iIzRENEQ0RCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNDgzIDEzLjk3ODhMMTMuMTM0MyAxMC4yMzE0QzEzLjA3NTQgMTAuMTkzOSAxMy4wMDc2IDEwLjE3MjggMTIuOTM3OCAxMC4xNzAzQzEyLjg2ODEgMTAuMTY3OSAxMi43OTg5IDEwLjE4NDIgMTIuNzM3NiAxMC4yMTc1QzEyLjY3NjIgMTAuMjUwOSAxMi42MjQ5IDEwLjMgMTIuNTg5IDEwLjM1OTlDMTIuNTUzMSAxMC40MTk4IDEyLjUzNCAxMC40ODgyIDEyLjUzMzQgMTAuNTU4VjE4LjA1MjNDMTIuNTM0IDE4LjEyMjEgMTIuNTUzMSAxOC4xOTA1IDEyLjU4OSAxOC4yNTA0QzEyLjYyNDkgMTguMzEwMyAxMi42NzYyIDE4LjM1OTQgMTIuNzM3NiAxOC4zOTI4QzEyLjc5ODkgMTguNDI2MSAxMi44NjgxIDE4LjQ0MjQgMTIuOTM3OCAxOC40NEMxMy4wMDc2IDE4LjQzNzUgMTMuMDc1NCAxOC40MTY0IDEzLjEzNDMgMTguMzc4OUwxOS4wNDg0IDE0LjYzMTVDMTkuMTAzNiAxNC41OTY4IDE5LjE0OTEgMTQuNTQ4NiAxOS4xODA2IDE0LjQ5MTZDMTkuMjEyMSAxNC40MzQ1IDE5LjIyODYgMTQuMzcwMyAxOS4yMjg2IDE0LjMwNTFDMTkuMjI4NiAxNC4yMzk5IDE5LjIxMjEgMTQuMTc1OCAxOS4xODA2IDE0LjExODdDMTkuMTQ5IDE0LjA2MTcgMTkuMTAzNSAxNC4wMTM1IDE5LjA0ODMgMTMuOTc4OFoiIGZpbGw9IiM0RDRENEQiLz4KPC9zdmc+Cg==" alt="">
+                            </span>
+                            <p class="fs-09 text-nowrap">Video</p>
+                        </div>
+                    </li>
+
+                    <li class="h-100 pt-2 pb-1 col d-flex align-items-center cursor-pointer pointer-events-none header-menu">
+                        <div class="d-list-item mx-auto">
+                            <span class="mb-5 d-flex justify-content-center">
+                                <img class="header-menu-type" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI2LjUgMjNDMjYuNjMyNiAyMyAyNi43NTk4IDIyLjk0NzMgMjYuODUzNiAyMi44NTM2QzI2Ljk0NzMgMjIuNzU5OCAyNyAyMi42MzI2IDI3IDIyLjVWNi41QzI3IDYuMzY3MzkgMjYuOTQ3MyA2LjI0MDIxIDI2Ljg1MzYgNi4xNDY0NUMyNi43NTk4IDYuMDUyNjggMjYuNjMyNiA2IDI2LjUgNkgyM1YxOC45OThDMjMgMjAuMDU4OSAyMi41Nzg2IDIxLjA3NjMgMjEuODI4NCAyMS44MjY0QzIxLjA3ODMgMjIuNTc2NiAyMC4wNjA5IDIyLjk5OCAxOSAyMi45OThIMTZWMjNIMTcuMTYzMUMxNy40OTExIDIzLjAwMDcgMTcuODA5OSAyMy4xMDgyIDE4LjA3MTMgMjMuMzA2MkwyMi45OTcxIDI2Ljk5NzFMMjMgMjMuNjk5NUMyMyAyMy41MTM4IDIzLjA3MzcgMjMuMzM1OCAyMy4yMDUgMjMuMjA0NUMyMy4zMzYzIDIzLjA3MzIgMjMuNTE0MyAyMi45OTk1IDIzLjcgMjIuOTk5NUwyNi41IDIzWiIgZmlsbD0iI0U3RTdFNyIvPgo8cGF0aCBkPSJNMjYuNSA1SDQuNUM0LjEwMjMxIDUuMDAwNDIgMy43MjEwMiA1LjE1ODU5IDMuNDM5ODEgNS40Mzk4MUMzLjE1ODU5IDUuNzIxMDIgMy4wMDA0MiA2LjEwMjMxIDMgNi41VjIyLjVDMy4wMDA0MiAyMi44OTc3IDMuMTU4NTkgMjMuMjc5IDMuNDM5ODEgMjMuNTYwMkMzLjcyMTAyIDIzLjg0MTQgNC4xMDIzMSAyMy45OTk2IDQuNSAyNEgxNy4xNjMxQzE3LjI3MzYgMjQuMDAwNSAxNy4zODA5IDI0LjAzNyAxNy40Njg4IDI0LjEwNEwyMi4zOTQ2IDI3Ljc5NDlDMjIuNTQyOSAyNy45MDc3IDIyLjcxOTcgMjcuOTc2OCAyMi45MDUxIDI3Ljk5NDVDMjMuMDkwNiAyOC4wMTIxIDIzLjI3NzMgMjcuOTc3NyAyMy40NDQyIDI3Ljg5NDlDMjMuNjExMSAyNy44MTIyIDIzLjc1MTUgMjcuNjg0NSAyMy44NDk4IDI3LjUyNjJDMjMuOTQ4IDI3LjM2NzkgMjQgMjcuMTg1MyAyNCAyNi45OTlWMjRIMjYuNUMyNi44OTc3IDIzLjk5OTYgMjcuMjc5IDIzLjg0MTQgMjcuNTYwMiAyMy41NjAyQzI3Ljg0MTQgMjMuMjc5IDI3Ljk5OTYgMjIuODk3NyAyOCAyMi41VjYuNUMyNy45OTk2IDYuMTAyMzEgMjcuODQxNCA1LjcyMTAyIDI3LjU2MDIgNS40Mzk4MUMyNy4yNzkgNS4xNTg1OSAyNi44OTc3IDUuMDAwNDIgMjYuNSA1Wk0yNyAyMi41QzI2Ljk5OTggMjIuNjMyNiAyNi45NDcxIDIyLjc1OTYgMjYuODUzMyAyMi44NTMzQzI2Ljc1OTYgMjIuOTQ3MSAyNi42MzI2IDIyLjk5OTggMjYuNSAyM0gyMy43QzIzLjUxNDQgMjMuMDAwMyAyMy4zMzY2IDIzLjA3NDEgMjMuMjA1MyAyMy4yMDUzQzIzLjA3NDEgMjMuMzM2NiAyMy4wMDAzIDIzLjUxNDQgMjMgMjMuN0wyMi45OTcxIDI2Ljk5NjlMMTguMDcxMyAyMy4zMDZDMTcuODA5OCAyMy4xMDggMTcuNDkxMSAyMy4wMDA1IDE3LjE2MzEgMjIuOTk5OEg0LjVDNC4zNjc0NSAyMi45OTk2IDQuMjQwMzggMjIuOTQ2OSA0LjE0NjY1IDIyLjg1MzFDNC4wNTI5MiAyMi43NTk0IDQuMDAwMTkgMjIuNjMyNCA0IDIyLjQ5OThWNi40OTk4QzQuMDAwMTkgNi4zNjcyNSA0LjA1MjkyIDYuMjQwMTggNC4xNDY2NSA2LjE0NjQ1QzQuMjQwMzggNi4wNTI3MiA0LjM2NzQ1IDUuOTk5OTkgNC41IDUuOTk5OEgyNi41QzI2LjYzMjYgNS45OTk5OSAyNi43NTk2IDYuMDUyNzIgMjYuODUzMyA2LjE0NjQ1QzI2Ljk0NzEgNi4yNDAxOCAyNi45OTk4IDYuMzY3MjUgMjcgNi40OTk4VjIyLjVaIiBmaWxsPSIjNEQ0RDREIiBzdHJva2U9IiM0RDRENEQiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjwvc3ZnPgo=" alt="">
+                            </span>
+                            <p class="fs-09 text-nowrap">Chat</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="h-100 col-0 col-md-4 ml-auto d-flex flex-row-reverse align-items-center">
+                    <li class="ml-3 d-flex px-2 align-items-center cursor-pointer header-user">
+                        <img class="mr-3 circle border" src="https://www.gapo.vn/assets/images/default-user-avatar.png" alt="">
+                        <div class="mr-1 fw-6 text-nowrap text-secondary username">Xuân Minh</div>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTguNDk5OTkgMy41SDMuNDk5OTlDMy4zMTg0OSAzLjUgMy4xNTA5OSAzLjU5ODUgMy4wNjI0OSAzLjc1NzVDMi45NzQ0OSAzLjkxNjUgMi45Nzk0OSA0LjExMSAzLjA3NTk5IDQuMjY1TDUuNTc1OTkgOC4yNjVDNS42Njc0OSA4LjQxMSA1LjgyNzQ5IDguNSA1Ljk5OTk5IDguNUM2LjE3MjQ5IDguNSA2LjMzMjQ5IDguNDExIDYuNDIzOTkgOC4yNjVMOC45MjM5OSA0LjI2NUM5LjAyMDQ5IDQuMTExIDkuMDI1NDkgMy45MTY1IDguOTM3NDkgMy43NTc1QzguODQ4OTkgMy41OTg1IDguNjgxNDkgMy41IDguNDk5OTkgMy41WiIgZmlsbD0iIzgwODA4MCIvPgo8L3N2Zz4K" alt="">
+                    </li>
+
+                    <div class="position-absolute top-100 border rounded box-shadow header-user-card">
+                        <div class="p-5 d-flex flex-column">
+                            <img class="mx-auto header-user-card--avatar rounded-circle border" src="https://www.gapo.vn/assets/images/default-user-avatar.png" alt="">
+                            <p class="mx-auto my-3 fw-6 username">Xuân Minh</p>
+                            <a class="text-center text-secondary" href="#">Trang cá nhân</a>
+                            <div class="border my-5"></div>
+                            <div id="logout" class="p-3 d-flex align-items-center rounded cursor-pointer transition-03 hover-gray">
+                                <img class="mx-3" src="https://www.gapo.vn/assets/icons/icon-logout.svg" alt="">
+                                Đăng xuất
+                            </div>
+                        </div>
+                    </div>
+
+                    <li class="mx-3 circle d-flex align-items-center justify-content-center border bg-color-light-1">
+                        <i class="fas fa-bell"></i>
+                    </li>
+                    <li class="mx-3 circle d-flex align-items-center justify-content-center border bg-color-light-1">
+                        <i class="fas fa-user-friends"></i>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="d-flex bg-color-light-2 overflow-x-hidden">
+            <aside class="col-lg-3 col-0 bg-light position-fixed main-side--right">
+                <h3 class="mt-3 p-3">Trang chủ</h3>
+                <ul class="p-3 d-flex flex-column">
+                    <li class="p-3 d-flex align-items-center rounded hover-gray bg-color-light-2 transition-03 cursor-pointer">
+                        <img class="mr-3" src="http://gapo.vn/assets/images/svg-icons/explore.svg" alt="">
+                        Khám phá
+                    </li>
+                    <li class="p-3 d-flex align-items-center rounded hover-gray hover-gray:hover transition-03 cursor-pointer">
+                        <img class="mr-3" src="http://gapo.vn/assets/images/svg-icons/follow-feed.svg" alt="">
+                        Theo dõi
+                    </li>
+                    <li class="p-3 d-flex align-items-center rounded hover-gray hover-gray:hover transition-03 cursor-pointer">
+                        <img class="mr-3" src="http://gapo.vn/assets/images/svg-icons/search-colorful.svg" alt="">
+                        Tìm bạn bè
+                    </li>
+                    <li class="p-3 d-flex align-items-center rounded hover-gray hover-gray:hover transition-03 cursor-pointer">
+                        <img class="mr-3" src="http://gapo.vn/assets/images/svg-icons/flag-page.svg" alt="">
+                        Trang của bạn
+                    </li>
+                </ul>
+            </aside>
+
+            <div class="mr-auto col-lg-3 col-0 main-sub"></div>
+
+            <!-- MIDDLE CONTENT -->
+            <div class="p-1 d-flex flex-column align-items-center col-lg-6 col-md-8 col-12 position-relative main-content">
+                <!-- UP POST -->
+                <div class="card-min-width p-2 d-flex flex-column position-absolute bg-light rounded box-shadow z-index-9 hidden post-box">
+                    <div class="d-flex flex-nowrap align-items-center">
+                        <img class="mr-3 circle border" src="https://www.gapo.vn/assets/images/default-user-avatar.png" alt="">
+                        <div>
+                            <div class="fw-6 text-nowrap mb-2 username">Xuân Minh</div>
+                            <div class="p-5 d-flex justify-content-center align-items-center rounded bg-color-light-2 fs-07 text-nowrap text-secondary cursor-pointer">
+                                <i class="mr-5 fs-1 fas fa-globe-asia"></i>
+                                Công khai
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTguNDk5OTkgMy41SDMuNDk5OTlDMy4zMTg0OSAzLjUgMy4xNTA5OSAzLjU5ODUgMy4wNjI0OSAzLjc1NzVDMi45NzQ0OSAzLjkxNjUgMi45Nzk0OSA0LjExMSAzLjA3NTk5IDQuMjY1TDUuNTc1OTkgOC4yNjVDNS42Njc0OSA4LjQxMSA1LjgyNzQ5IDguNSA1Ljk5OTk5IDguNUM2LjE3MjQ5IDguNSA2LjMzMjQ5IDguNDExIDYuNDIzOTkgOC4yNjVMOC45MjM5OSA0LjI2NUM5LjAyMDQ5IDQuMTExIDkuMDI1NDkgMy45MTY1IDguOTM3NDkgMy43NTc1QzguODQ4OTkgMy41OTg1IDguNjgxNDkgMy41IDguNDk5OTkgMy41WiIgZmlsbD0iIzgwODA4MCIvPgo8L3N2Zz4K" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-3 border"></div>
+
+                    <div>
+                        <textarea id="post-content" class="w-100 fs-1 outline-none border-0" cols="50" rows="10" placeholder="Bạn muốn chia sẻ điều gì?"></textarea>
+                    </div>
+
+                    <div id="" class="mt-3 d-none group--selected">
+                        <div class="p-3 d-flex align-items-center rounded bg-color-light-1 transition-03 cursor-pointer">
+                            <img class="mr-2" width="30px" src="https://www.gapo.vn/assets/icons/group-active.svg" alt="">
+                            Thế Hệ Kì Quái
+                        </div>
+                    </div>
+
+                    <div class="mt-3 d-none form-control overflow-hidden overflow-y-scroll group-list--items" style="max-height: 200px;">
+                        <div key="" class="p-3 d-flex align-items-center rounded hover-gray transition-03 cursor-pointer group-list--item">
+                            -- Nhóm --
+                        </div>
+                    </div>
+
+                    <div class="mt-3 border"></div>
+
+                    <div class="d-flex p-1">
+                        <div class="py-3 col d-flex justify-content-center align-items-center col rounded cursor-pointer hover-gray">
+                            <img class="mr-2" width="20px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyMCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfaSkiPgo8cGF0aCBkPSJNMTcgMUgzQzEuODk1NDMgMSAxIDEuODk1NDMgMSAzVjE1QzEgMTYuMTA0NiAxLjg5NTQzIDE3IDMgMTdIMTdDMTguMTA0NiAxNyAxOSAxNi4xMDQ2IDE5IDE1VjNDMTkgMS44OTU0MyAxOC4xMDQ2IDEgMTcgMVoiIGZpbGw9IiNBNUQyRkYiLz4KPC9nPgo8cGF0aCBkPSJNMTcgMUgzQzEuODk1NDMgMSAxIDEuODk1NDMgMSAzVjE1QzEgMTYuMTA0NiAxLjg5NTQzIDE3IDMgMTdIMTdDMTguMTA0NiAxNyAxOSAxNi4xMDQ2IDE5IDE1VjNDMTkgMS44OTU0MyAxOC4xMDQ2IDEgMTcgMVoiIHN0cm9rZT0iIzNCNDM1MyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIxX2kpIj4KPHBhdGggZD0iTTIgMTYuNUwzLjkzNDYzIDEyLjc5MDdDNC41NDE1MyAxMS42MjcxIDYuMTA4OTMgMTEuMzk3OCA3LjAyMzc2IDEyLjMzODdDNy44MTU0NyAxMy4xNTMxIDkuMTM2MjUgMTMuMTA5MiA5Ljg3MjE3IDEyLjI0NDFMMTIuMTU0OCA5LjU2MDkxQzEzLjEzNzQgOC40MDU4IDE0Ljk5NzkgOC43MjE4NiAxNS41NDQgMTAuMTM2N0wxOCAxNi41IiBmaWxsPSIjNTFEQjYxIi8+CjwvZz4KPHBhdGggZD0iTTIgMTYuNUwzLjkzNDYzIDEyLjc5MDdDNC41NDE1MyAxMS42MjcxIDYuMTA4OTMgMTEuMzk3OCA3LjAyMzc2IDEyLjMzODdWMTIuMzM4N0M3LjgxNTQ3IDEzLjE1MzEgOS4xMzYyNSAxMy4xMDkyIDkuODcyMTcgMTIuMjQ0MUwxMi4xNTQ4IDkuNTYwOTFDMTMuMTM3NCA4LjQwNTggMTQuOTk3OSA4LjcyMTg2IDE1LjU0NCAxMC4xMzY3TDE4IDE2LjUiIHN0cm9rZT0iIzNCNDM1MyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik03IDhDOC4xMDQ1NyA4IDkgNy4xMDQ1NyA5IDZDOSA0Ljg5NTQzIDguMTA0NTcgNCA3IDRDNS44OTU0MyA0IDUgNC44OTU0MyA1IDZDNSA3LjEwNDU3IDUuODk1NDMgOCA3IDhaIiBmaWxsPSIjRkZERTJFIiBzdHJva2U9IiMzQjQzNTMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8ZGVmcz4KPGZpbHRlciBpZD0iZmlsdGVyMF9pIiB4PSIwLjQwMDAyNCIgeT0iMC4zOTk5OTQiIHdpZHRoPSIxOS4yIiBoZWlnaHQ9IjE3LjIiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeD0iLTQiIGR5PSIyIi8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsyPSItMSIgazM9IjEiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAuMSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93Ii8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSJmaWx0ZXIxX2kiIHg9IjEuMzk5OSIgeT0iOC4yNTYxMyIgd2lkdGg9IjE3LjIwMDMiIGhlaWdodD0iOC44NDQwMiIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlT2Zmc2V0IGR4PSItMyIgZHk9IjIiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xMiAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93Ii8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="">
+                            Ảnh/Video
+                        </div>
+                        <div class="py-3 col d-flex justify-content-center align-items-center col rounded cursor-pointer hover-gray">
+                            <img class="mr-2" width="20px" src="https://www.gapo.vn/assets/icons/icon-ask.svg" alt="">
+                            Hỏi đáp
+                        </div>
+                        <div class="py-3 col d-flex justify-content-center align-items-center col rounded cursor-pointer hover-gray group-list--show">
+                            <img class="mr-2" width="30px" src="https://www.gapo.vn/assets/icons/group-active.svg" alt="">
+                            Nhóm
+                        </div>
+                    </div>
+
+                    <div class="mb-3 border"></div>
+
+                    <div>
+                        <button id="post-btn" class="w-100 p-3 bg-color-green-2 fs-1 text-light rounded outline-none border-0 cursor-pointer transition-03">Chia sẻ</button>
+                    </div>
+                </div>
+
+                <div class="card-min-width p-2 d-flex flex-column position-absolute bg-light rounded box-shadow z-index-9 hidden update-box">
+                    <div class="d-flex flex-nowrap align-items-center">
+                        <img class="mr-3 circle border" src="https://www.gapo.vn/assets/images/default-user-avatar.png" alt="">
+                        <div>
+                            <div class="fw-6 text-nowrap mb-2 username">Xuân Minh</div>
+                            <div class="p-5 d-flex justify-content-center align-items-center rounded bg-color-light-2 fs-07 text-nowrap text-secondary cursor-pointer">
+                                <i class="mr-5 fs-1 fas fa-globe-asia"></i>
+                                Công khai
+                                <img src="https://www.gapo.vn/assets/icons/icon-dropdown.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-3 border"></div>
+
+                    <div>
+                        <textarea id="post-content" class="w-100 fs-1 outline-none border-0" cols="50" rows="5" placeholder="Bạn muốn chia sẻ điều gì?"></textarea>
+                    </div>
+
+                    <div class="mt-3 border"></div>
+
+                    <div class="d-flex p-1">
+                        <div class="py-3 col d-flex justify-content-center align-items-center col rounded cursor-pointer hover-gray">
+                            <img class="mr-2" width="20px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyMCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfaSkiPgo8cGF0aCBkPSJNMTcgMUgzQzEuODk1NDMgMSAxIDEuODk1NDMgMSAzVjE1QzEgMTYuMTA0NiAxLjg5NTQzIDE3IDMgMTdIMTdDMTguMTA0NiAxNyAxOSAxNi4xMDQ2IDE5IDE1VjNDMTkgMS44OTU0MyAxOC4xMDQ2IDEgMTcgMVoiIGZpbGw9IiNBNUQyRkYiLz4KPC9nPgo8cGF0aCBkPSJNMTcgMUgzQzEuODk1NDMgMSAxIDEuODk1NDMgMSAzVjE1QzEgMTYuMTA0NiAxLjg5NTQzIDE3IDMgMTdIMTdDMTguMTA0NiAxNyAxOSAxNi4xMDQ2IDE5IDE1VjNDMTkgMS44OTU0MyAxOC4xMDQ2IDEgMTcgMVoiIHN0cm9rZT0iIzNCNDM1MyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIxX2kpIj4KPHBhdGggZD0iTTIgMTYuNUwzLjkzNDYzIDEyLjc5MDdDNC41NDE1MyAxMS42MjcxIDYuMTA4OTMgMTEuMzk3OCA3LjAyMzc2IDEyLjMzODdDNy44MTU0NyAxMy4xNTMxIDkuMTM2MjUgMTMuMTA5MiA5Ljg3MjE3IDEyLjI0NDFMMTIuMTU0OCA5LjU2MDkxQzEzLjEzNzQgOC40MDU4IDE0Ljk5NzkgOC43MjE4NiAxNS41NDQgMTAuMTM2N0wxOCAxNi41IiBmaWxsPSIjNTFEQjYxIi8+CjwvZz4KPHBhdGggZD0iTTIgMTYuNUwzLjkzNDYzIDEyLjc5MDdDNC41NDE1MyAxMS42MjcxIDYuMTA4OTMgMTEuMzk3OCA3LjAyMzc2IDEyLjMzODdWMTIuMzM4N0M3LjgxNTQ3IDEzLjE1MzEgOS4xMzYyNSAxMy4xMDkyIDkuODcyMTcgMTIuMjQ0MUwxMi4xNTQ4IDkuNTYwOTFDMTMuMTM3NCA4LjQwNTggMTQuOTk3OSA4LjcyMTg2IDE1LjU0NCAxMC4xMzY3TDE4IDE2LjUiIHN0cm9rZT0iIzNCNDM1MyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik03IDhDOC4xMDQ1NyA4IDkgNy4xMDQ1NyA5IDZDOSA0Ljg5NTQzIDguMTA0NTcgNCA3IDRDNS44OTU0MyA0IDUgNC44OTU0MyA1IDZDNSA3LjEwNDU3IDUuODk1NDMgOCA3IDhaIiBmaWxsPSIjRkZERTJFIiBzdHJva2U9IiMzQjQzNTMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8ZGVmcz4KPGZpbHRlciBpZD0iZmlsdGVyMF9pIiB4PSIwLjQwMDAyNCIgeT0iMC4zOTk5OTQiIHdpZHRoPSIxOS4yIiBoZWlnaHQ9IjE3LjIiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeD0iLTQiIGR5PSIyIi8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsyPSItMSIgazM9IjEiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAuMSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93Ii8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSJmaWx0ZXIxX2kiIHg9IjEuMzk5OSIgeT0iOC4yNTYxMyIgd2lkdGg9IjE3LjIwMDMiIGhlaWdodD0iOC44NDQwMiIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlT2Zmc2V0IGR4PSItMyIgZHk9IjIiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xMiAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93Ii8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="">
+                            Ảnh/Video
+                        </div>
+                        <div class="py-3 col d-flex justify-content-center align-items-center col rounded cursor-pointer hover-gray">
+                            <img class="mr-2" width="20px" src="https://www.gapo.vn/assets/icons/icon-ask.svg" alt="">
+                            Hỏi đáp
+                        </div>
+                    </div>
+
+                    <div class="mb-3 border"></div>
+
+                    <div>
+                        <button id="post-btn" class="w-100 p-3 bg-color-green-2 fs-1 text-light rounded outline-none border-0 cursor-pointer transition-03">Chia sẻ</button>
+                    </div>
+                </div>
+
+                <div class="card-min-width col-8 p-2 d-flex flex-column position-absolute bg-light rounded box-shadow z-index-9 hidden group-box">
+                    <div>
+                        <h1 class="mb-2 text-secondary">Tạo nhóm mới</h1>
+                        <p class="fs-08 text-secondary">Tạo không gian tuyệt vời để hoàn thành công việc và chỉ liên lạc với những người bạn muốn. Hãy chia sẻ ảnh và video, trò chuyện, lên kế hoạch và nhiều hoạt động khác với những người bạn trên Gapo.</p>
+                    </div>
+
+                    <div class="my-3 border"></div>
+
+                    <div class="mb-3">
+                        <p class="mb-1">Tên nhóm</p>
+                        <input id="group-name" class="w-100 form-control" type="text" placeholder="Nhập tên nhóm...">
+                    </div>
+
+                    <div>
+                        <p class="mb-1">Mô tả</p>
+                        <textarea id="group-description" class="w-100 form-control fs-15 border-0" cols="50" rows="7" placeholder="Mô tả..."></textarea>
+                    </div>
+
+                    <div class="my-3 border"></div>
+
+                    <div>
+                        <button id="group-btn" class="w-100 p-3 bg-color-green-2 fs-1 text-light rounded outline-none border-0 cursor-pointer transition-03">Tạo nhóm</button>
+                    </div>
+                </div>
+
+                <div class="card-min-width col-8 p-2 d-flex flex-nowrap align-items-center bg-light rounded box-shadow">
+                    <img class="mr-auto circle border" src="https://www.gapo.vn/assets/images/default-user-avatar.png" alt="">
+                    <button class="mx-3 form-control hover-light-green cursor-pointer post-show-box">Đăng bài viết</button>
+                    <div class="ml-auto circle hover-gray d-flex justify-content-center align-items-center bg-light post-show-box">
+                        <img width="50%" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyMCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfaSkiPgo8cGF0aCBkPSJNMTcgMUgzQzEuODk1NDMgMSAxIDEuODk1NDMgMSAzVjE1QzEgMTYuMTA0NiAxLjg5NTQzIDE3IDMgMTdIMTdDMTguMTA0NiAxNyAxOSAxNi4xMDQ2IDE5IDE1VjNDMTkgMS44OTU0MyAxOC4xMDQ2IDEgMTcgMVoiIGZpbGw9IiNBNUQyRkYiLz4KPC9nPgo8cGF0aCBkPSJNMTcgMUgzQzEuODk1NDMgMSAxIDEuODk1NDMgMSAzVjE1QzEgMTYuMTA0NiAxLjg5NTQzIDE3IDMgMTdIMTdDMTguMTA0NiAxNyAxOSAxNi4xMDQ2IDE5IDE1VjNDMTkgMS44OTU0MyAxOC4xMDQ2IDEgMTcgMVoiIHN0cm9rZT0iIzNCNDM1MyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIxX2kpIj4KPHBhdGggZD0iTTIgMTYuNUwzLjkzNDYzIDEyLjc5MDdDNC41NDE1MyAxMS42MjcxIDYuMTA4OTMgMTEuMzk3OCA3LjAyMzc2IDEyLjMzODdDNy44MTU0NyAxMy4xNTMxIDkuMTM2MjUgMTMuMTA5MiA5Ljg3MjE3IDEyLjI0NDFMMTIuMTU0OCA5LjU2MDkxQzEzLjEzNzQgOC40MDU4IDE0Ljk5NzkgOC43MjE4NiAxNS41NDQgMTAuMTM2N0wxOCAxNi41IiBmaWxsPSIjNTFEQjYxIi8+CjwvZz4KPHBhdGggZD0iTTIgMTYuNUwzLjkzNDYzIDEyLjc5MDdDNC41NDE1MyAxMS42MjcxIDYuMTA4OTMgMTEuMzk3OCA3LjAyMzc2IDEyLjMzODdWMTIuMzM4N0M3LjgxNTQ3IDEzLjE1MzEgOS4xMzYyNSAxMy4xMDkyIDkuODcyMTcgMTIuMjQ0MUwxMi4xNTQ4IDkuNTYwOTFDMTMuMTM3NCA4LjQwNTggMTQuOTk3OSA4LjcyMTg2IDE1LjU0NCAxMC4xMzY3TDE4IDE2LjUiIHN0cm9rZT0iIzNCNDM1MyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik03IDhDOC4xMDQ1NyA4IDkgNy4xMDQ1NyA5IDZDOSA0Ljg5NTQzIDguMTA0NTcgNCA3IDRDNS44OTU0MyA0IDUgNC44OTU0MyA1IDZDNSA3LjEwNDU3IDUuODk1NDMgOCA3IDhaIiBmaWxsPSIjRkZERTJFIiBzdHJva2U9IiMzQjQzNTMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8ZGVmcz4KPGZpbHRlciBpZD0iZmlsdGVyMF9pIiB4PSIwLjQwMDAyNCIgeT0iMC4zOTk5OTQiIHdpZHRoPSIxOS4yIiBoZWlnaHQ9IjE3LjIiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeD0iLTQiIGR5PSIyIi8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsyPSItMSIgazM9IjEiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAuMSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93Ii8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSJmaWx0ZXIxX2kiIHg9IjEuMzk5OSIgeT0iOC4yNTYxMyIgd2lkdGg9IjE3LjIwMDMiIGhlaWdodD0iOC44NDQwMiIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlT2Zmc2V0IGR4PSItMyIgZHk9IjIiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xMiAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93Ii8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="">
+                    </div>
+                </div>
+
+
+                <!-- TENDENCY -->
+                <div class="card-min-width col-8 p-2 d-flex flex-column align-items-center bg-light rounded box-shadow">
+                    <div class="row mb-3 align-items-center fw-6 fs-01">
+                        <img class="mr-3" src="https://www.gapo.vn/assets/images/icon-trend.svg" alt="">
+                        Xu hướng nổi bậc
+                    </div>
+
+                    <div class="row position-relative overflow-hidden">
+                        <ul class="row post-tendency-slide">
+                            <li class="position-relative">
+                                <div class=" border rounded post-tendency-item">
+                                    <img class="w-100 rounded post-tendency-item-image" src="https://image-1.gapo.vn/images/a692a630-3a31-46ea-8002-9bc5ef78c964.jpeg" alt="">
+                                </div>
+                                <p class="w-100 px-5 position-absolute bottom-10px left-50 translate-x-50 fw-7 text-light text-center text-overflow-ellipsis overflow-hidden">#phim</p>
+                            </li>
+                            <li class="position-relative">
+                                <div class="border rounded post-tendency-item">
+                                    <img class="w-100 rounded post-tendency-item-image" src="https://image-5.gapo.vn/images/40c90734-b042-4abe-95f9-421f142919fc.jpeg" alt="">
+                                </div>
+                                <p class="w-100 px-5 position-absolute bottom-10px left-50 translate-x-50 fw-7 text-light text-center text-overflow-ellipsis overflow-hidden">#vongquaymayman</p>
+                            </li>
+                            <li class="position-relative">
+                                <div class="border rounded post-tendency-item">
+                                    <img class="w-100 rounded post-tendency-item-image" src="https://image-1.gapo.vn/images/0f5f9636-d042-439d-9efc-dfe55b112154.jpeg" alt="">
+                                </div>
+                                <p class="w-100 px-5 position-absolute bottom-10px left-50 translate-x-50 fw-7 text-light text-center text-overflow-ellipsis overflow-hidden">#tamsu</p>
+                            </li>
+                            <li class="position-relative">
+                                <div class="border rounded post-tendency-item">
+                                    <img class="w-100 rounded post-tendency-item-image" src="https://image-5.gapo.vn/images/91ef2171-c618-4eba-8f93-4a7f3dc99772.jpeg" alt="">
+                                </div>
+                                <p class="w-100 px-5 position-absolute bottom-10px left-50 translate-x-50 fw-7 text-light text-center text-overflow-ellipsis overflow-hidden">#chiase</p>
+                            </li>
+                            <li class="position-relative">
+                                <div class="border rounded post-tendency-item">
+                                    <img class="w-100 rounded post-tendency-item-image" src="https://image-5.gapo.vn/images/a7c2f462-ac7e-4887-bc01-5dcd7d9243ff.jpeg" alt="">
+                                </div>
+                                <p class="w-100 px-5 position-absolute bottom-10px left-50 translate-x-50 fw-7 text-light text-center text-overflow-ellipsis overflow-hidden">#muaban</p>
+                            </li>
+    
+                            <div class="ml-1 circle position-absolute top-50 left-0 translate-y-50 bg-dark text-center text-light post-tendency-slide--left">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="mr-1 circle position-absolute top-50 right-0 translate-y-50 bg-dark text-center text-light post-tendency-slide--right">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ALL POSTS -->
+                <div class="card-min-width col-8 post-items">
+                    <div key="${post._id}" class="w-100 bg-light position-relative rounded box-shadow post-item" style="padding: 5px 0;">
+                        <div class="mb-3 d-flex flex-nowrap align-items-center">
+                            <img class="mr-3 circle border" src="https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg" alt="">
+                            <div>
+                                <div class="fw-6 mb-2 username">Xuân Minh</div>
+                                <div class="mt-3 fs-08 text-secondary">Vài giây trước</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            ${user.content}
+                        </div>
+
+                        <div class="mb-3 mx-0">
+                            <img width="100%" src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/141510004_2568298453468124_2126444197393732515_o.jpg?_nc_cat=101&ccb=2&_nc_sid=8bfeb9&_nc_ohc=3RcQct3lufgAX9Mp7fd&_nc_ht=scontent.fsgn2-4.fna&oh=025d9474da78bfd69b4b17637e006f8d&oe=60357D8A" alt="">
+                        </div>
+
+                        <div class="my-0 d-flex align-items-center text-secondary">
+                            <div class="px-1 d-flex cursor-pointer">
+                                <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+
+                                <div class="d-flex align-items-center">200</div>
+                            </div>
+                            <div class="ml-auto cursor-pointer">
+                                98 bình luận
+                            </div>
+                        </div>
+
+                        <div class="mx-0 mb-0 position-relative border">
+                            <div class="d-flex p-2 position-absolute rounded-pill border bg-light reaction-box">
+                                <img class="circle reaction-icon reaction-like" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                                <img class="circle reaction-icon reaction-love" src="http://gapo.vn/assets/images/png-icons/love-reaction.png" alt="">
+                                <img class="circle reaction-icon reaction-haha" src="http://gapo.vn/assets/images/png-icons/haha-reaction.png" alt="">
+                                <img class="circle reaction-icon reaction-wow" src="http://gapo.vn/assets/images/png-icons/wow-reaction.png" alt="">
+                                <img class="circle reaction-icon reaction-sad" src="http://gapo.vn/assets/images/png-icons/sad-reaction.png" alt="">
+                                <img class="circle reaction-icon reaction-angry" src="http://gapo.vn/assets/images/png-icons/angry-reaction.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="row m-1 p-0 text-secondary">
+                            <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box">
+                                <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                                Thích
+                            </div>
+                            <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray">
+                                <i class="mr-3 far fa-comment-alt"></i>Bình luận
+                            </div>
+                            <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray">
+                                <i class="mr-3 far fa-share-square"></i>Chia sẻ
+                            </div>
+                        </div>
+
+                        <div class="mx-0 mt-0 border"></div>
+
+                        <div class="mt-0 pt-0 post-item-comments">
+                            <div class="d-flex">
+                                <img class="mr-2 circle border" src="https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg" alt="">
+                                <div>
+                                    <div class="d-inline-block rounded bg-color-light-2" style="padding: .6rem;">
+                                        <p class="mb-2 fw-6 username">Xuân Minh</p>
+                                        <span>Mãi yêuuuu</span>
+                                    </div>
+                                    <div>
+                                        <span class="position-relative mt-5 fs-08 cursor-pointer post-item-comments-reaction" style="margin-left: .5rem;">
+                                            Thích
+                                        </span>
+                                        <span class="fs-08 text-secondary" style="margin-left: 10px;">Vài giây trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="my-0 mb-2 d-flex">
+                            <img class="mr-auto circle border" src="https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg" alt="">
+                            <input class="mx-2 form-control bg-color-light-1 rounded-pill post-item-comment-content" type="text" placeholder="Viết bình luận...">
+                            <img class="ml-auto circle post-item-comment-send" src="https://www.gapo.vn/assets/images/svg-icons/send-message-icon.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ml-auto col-lg-3 col-md-4 col-0 main-sub"></div>
+
+            <aside class="col-lg-3 col-md-4 col-0 bg-light position-fixed main-side--left">
+                <div class="p-3 row flex-column">
+                    <div class="row mt-2 p-2 align-items-center">
+                        <span class='pr-2'><h3>Tài khoản: 0</h3></span>
+                        <span>
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMCAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeT0iMC41IiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iI0YzQjYxMiIvPgo8cmVjdCB4PSIyLjUiIHk9IjMiIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgcng9IjcuNSIgZmlsbD0iI0ZGQ0M0NSIvPgo8cGF0aCBkPSJNMTMuNzUgOC45MjE4OEMxMy43NSA4Ljg1MTU2IDEzLjc1IDguNzczNDQgMTMuNzQyOCA4LjcwMzEyVjQuODc1SDEyLjQzODRWNS44NTE1NkMxMS43ODYyIDUuMjQyMTkgMTAuOTMxMiA0Ljg3NSAxMC4wMDM2IDQuODc1QzcuOTMxMTYgNC44NzUgNi4yNSA2LjY4NzUgNi4yNSA4LjkyMTg4QzYuMjUgMTEuMTU2MiA3LjkzMTE2IDEyLjk2ODggMTAuMDAzNiAxMi45Njg4QzEwLjkzODQgMTIuOTY4OCAxMS43OTM1IDEyLjYwMTYgMTIuNDUyOSAxMS45ODQ0VjEyLjM1OTRDMTIuNDUyOSAxMy4xMTcyIDEyLjI1NzIgMTMuNzEwOSAxMS44NjU5IDE0LjE1NjJDMTEuNDYwMSAxNC42MDk0IDEwLjkzMTIgMTQuODI4MSAxMC4yMjgzIDE0LjgyODFDOS4xNDEzIDE0LjgyODEgOC40MDIxNyAxNC4zMzU5IDcuOTc0NjQgMTMuMzIwM0g2LjU3NjA5QzYuODIyNDYgMTQuMjAzMSA3LjI3ODk5IDE0LjkwNjIgNy45NTI5IDE1LjQwNjJDOC41OTc4MyAxNS44ODI4IDkuMzY1OTQgMTYuMTI1IDEwLjIzNTUgMTYuMTI1QzExLjQ2MDEgMTYuMTI1IDEyLjQyMzkgMTUuNjQwNiAxMy4wOTA2IDE0LjY4NzVDMTMuMzY1OSAxNC4zMDQ3IDEzLjU1NDMgMTMuODQzOCAxMy42NDg2IDEzLjMyODFDMTMuNjg0OCAxMy4xMTcyIDEzLjcxMzggMTIuODc1IDEzLjcyODMgMTIuNjE3MkMxMy43MzU1IDEyLjUyMzQgMTMuNzM1NSAxMi40MjE5IDEzLjc0MjggMTEuOTA2MlY5LjEzMjgxQzEzLjc1IDkuMDYyNSAxMy43NSA4Ljk5MjE5IDEzLjc1IDguOTIxODhaTTEwLjAwMzYgMTEuNTQ2OUM4LjY1NTggMTEuNTQ2OSA3LjU2MTU5IDEwLjM2NzIgNy41NjE1OSA4LjkxNDA2QzcuNTYxNTkgNy40NjA5NCA4LjY1NTggNi4yODEyNSAxMC4wMDM2IDYuMjgxMjVDMTEuMzUxNCA2LjI4MTI1IDEyLjQ0NTcgNy40NjA5NCAxMi40NDU3IDguOTE0MDZDMTIuNDM4NCAxMC4zNjcyIDExLjM0NDIgMTEuNTQ2OSAxMC4wMDM2IDExLjU0NjlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="">
+                        </span>
+                        <span class="ml-auto mr-3 p-3 rounded bg-color-light-2 fw-7 text-secondary cursor-pointer">Mua Coin</span>
+                    </div>
+                    
+                    <div class="p-2 fw-6 text-secondary friend-requesting"></div>
+
+                    <div class="mb-3 border"></div>
+
+                    <div class="p-2 fw-6 text-secondary friend-contact">Người liên hệ</div>
+                    <div class="users-list text-secondary"></div>
+                </div>
+            </aside>
+
+            <div key="" class="mr-5 d-none position-fixed bottom-0 right-0 bg-light box-shadow rounded messages-box" style="height: 450px; width: 330px;">
+                <div key="" id="friend-info" class="px-3 d-flex align-items-center border bg-color-green-2 text-light rounded-top" style="height: 50px">
+                    <img class="mr-2 circle circle-sm border" src="https://www.gapo.vn/assets/images/default-user-avatar.png">
+                    <div class="cursor-pointer">Xuân Minh</div>
+                    <i class="ml-auto fs-15 fas fa-times cursor-pointer messages-hidden"></i>
+                </div>
+
+                <div class="overflow-y-scroll friend-message-items--wrapped" style="height: calc(100% - 100px);">
+                    <div id="friend-message-items" class="d-flex flex-column-reverse" style="min-height: 100%;"></div>
+                </div>
+
+                <div class="mt-auto px-2 d-flex align-items-center border-top" style="height: 50px;">
+                    <img class="mr-3 cursor-pointer" src="https://www.gapo.vn/assets/icons/gif-icon.svg" alt="">
+                    <img class="mr-3 cursor-pointer" src="https://www.gapo.vn/assets/images/chat/image.svg" alt="">
+                    <img class="mr-3 cursor-pointer" src="https://www.gapo.vn/assets/images/chat/sticker.svg" alt="">
+                    <div>
+                        <input id="message-content" class="form-control bg-color-light-1 rounded-pill" type="text" placeholder="Trả lời..." style="padding: .5em;">
+                    </div>
+                    <img id="message-send" class="cursor-pointer" width="30px" src="https://www.gapo.vn/assets/images/svg-icons/send-message-icon.svg" alt="">
+                </div>
+            </div>
+        </main>
+
+        <div class="screen--dark"></div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/6184c439ae.js" crossorigin="anonymous"></script>
+    <script src="../../libs/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(()=>{
+            const userID = localStorage.getItem('_id')
+            
+            //FUNCTION
+            function getUsers(handleData){
+                $.ajax({
+                    url: 'http://localhost:3000/users',
+                    type: 'GET',
+                    contentType: 'application/json'
+                }).done(data => handleData(data))
+            }
+
+            function getPosts(handleData){
+                $.ajax({
+                    url: 'http://localhost:3000/posts',
+                    type: 'GET',
+                    contentType: 'application/json'
+                }).done(data => {handleData(data)})
+            }
+
+            function getGroups(handleData){
+                $.ajax({
+                    url: 'http://localhost:3000/groups',
+                    type: 'GET',
+                    contentType: 'application/json'
+                }).done(data => {handleData(data)})
+            }
+
+            function getUserByID(id, handleData){
+                $.ajax({
+                    url: `http://localhost:3000/users/${id}`,
+                    type: 'GET',
+                    contentType: 'application/json'
+                }).done(data => {handleData(data)})
+            }
+
+            function getGroupByID(id, handleData){
+                $.ajax({
+                    url: `http://localhost:3000/groups/${id}`,
+                    type: 'GET',
+                    contentType: 'application/json'
+                }).done(data => handleData(data))
+            }
+
+            function getPostByID(id, handleData){
+                $.ajax({
+                    url: `http://localhost:3000/posts/${id}`,
+                    type: 'GET',
+                    contentType: 'application/json'
+                }).done(data => handleData(data))
+            }
+
+            function showPost(post){
+                getUserByID(post.userID, (data) => {
+                    const user = data.doc
+                    const html = `
+                        <div key="${post._id}" class="w-100 bg-light position-relative rounded box-shadow post-item" style="padding: 5px 0;">
+                            <div class="mb-3 d-flex flex-nowrap align-items-center">
+                                <img class="mr-3 circle border" src="${user.avatar}" alt="">
+                                <div>
+                                    <div class="d-inline-block fw-6 mb-2">${user.firstName + " " + user.lastName}</div>
+                                    <div class="fs-08 text-secondary text-nowrap">
+                                        <span class="mt-3 pr-5 position-relative post-date">${
+                                            handleDate(post.timestamps)
+                                        }</span>
+                                        <span><i class="ml-5 pl-5 fas fa-globe-asia" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                ${post.content}
+                            </div>
+                            
+                            ${(post.reaction.like.length + post.reaction.love.length + post.reaction.haha.length + post.reaction.wow.length + post.reaction.sad.length + post.reaction.angry.length) > 0 ? (
+                                `<div class="my-0 d-flex text-secondary">
+                                    <div class="d-flex cursor-pointer">
+                                        <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+
+                                        <div class="d-flex align-items-center">
+                                            ${post.reaction.like.length + post.reaction.love.length + post.reaction.haha.length + post.reaction.wow.length + post.reaction.sad.length + post.reaction.angry.length}
+                                        </div>
+                                    </div>
+                                    <div class="ml-auto d-flex align-items-center cursor-pointer">
+                                        ${post.comments.length > 0 ? `${post.comments.length} bình luận` : ''}
+                                    </div>
+                                </div>    
+                            `).replace(/,/g, '') : ''}
+
+                            <div class="mx-0 mb-0 position-relative border">
+                                <div class="d-flex p-2 position-absolute rounded-pill border bg-light reaction-box">
+                                    <img class="circle reaction-icon reaction-like" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                                    <img class="circle reaction-icon reaction-love" src="http://gapo.vn/assets/images/png-icons/love-reaction.png" alt="">
+                                    <img class="circle reaction-icon reaction-haha" src="http://gapo.vn/assets/images/png-icons/haha-reaction.png" alt="">
+                                    <img class="circle reaction-icon reaction-wow" src="http://gapo.vn/assets/images/png-icons/wow-reaction.png" alt="">
+                                    <img class="circle reaction-icon reaction-sad" src="http://gapo.vn/assets/images/png-icons/sad-reaction.png" alt="">
+                                    <img class="circle reaction-icon reaction-angry" src="http://gapo.vn/assets/images/png-icons/angry-reaction.png" alt="">
+                                </div>
+                            </div>
+
+                            <div class="row m-1 p-0 text-secondary">
+                                ${
+                                    post.reaction.like.indexOf(userID) != -1 ?
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box" style="color: #6fbe44;">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                                            Thích
+                                        </div>
+                                        `
+                                    : post.reaction.love.indexOf(userID) != -1 ?
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center text- fw-06 cursor-pointer rounded hover-gray reaction-show-box" style="color: #6fbe44;">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/love-reaction.png" alt="">
+                                            Love
+                                        </div>
+                                        `
+                                    : post.reaction.haha.indexOf(userID) != -1 ?
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box" style="color: #6fbe44;">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/haha-reaction.png" alt="">
+                                            Haha
+                                        </div>
+                                        `
+                                    : post.reaction.wow.indexOf(userID) != -1 ?
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box" style="color: #6fbe44;">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/wow-reaction.png" alt="">
+                                            Wow
+                                        </div>
+                                        `
+                                    : post.reaction.sad.indexOf(userID) != -1 ?
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box" style="color: #6fbe44;">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/sad-reaction.png" alt="">
+                                            Sad
+                                        </div>
+                                        `
+                                    : post.reaction.angry.indexOf(userID) != -1 ?
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box" style="color: #6fbe44;">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/angry-reaction.png" alt="">
+                                            Angry
+                                        </div>
+                                        ` :
+                                        `
+                                        <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray reaction-show-box">
+                                            <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                                            Thích
+                                        </div>
+                                        `
+                                }
+                                <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray">
+                                    <i class="mr-3 far fa-comment-alt"></i>Bình luận
+                                </div>
+                                <div class="p-2 col d-flex justify-content-center align-items-center fw-06 cursor-pointer rounded hover-gray">
+                                    <i class="mr-3 far fa-share-square"></i>Chia sẻ
+                                </div>
+                            </div>
+
+                            <div class="mx-0 mt-0 border"></div>
+
+                            <div class="mt-0 pt-0 post-item-comments"></div>
+
+                            <div class="my-0 mb-2 d-flex">
+                                <img class="mr-auto circle border" src="${user.avatar}" alt="">
+                                <input class="mx-2 form-control bg-color-light-1 rounded-pill post-item-comment-content" type="text" placeholder="Viết bình luận...">
+                                <img class="ml-auto circle post-item-comment-send" src="https://www.gapo.vn/assets/images/svg-icons/send-message-icon.svg" alt="">
+                            </div>
+                        </div>
+                    `
+
+                    $('.post-items').prepend(html)
+
+                    if(post.comments.length > 0){
+                        post.comments.map(comment => handleComments(post._id, comment))
+                    }
+
+                    $('.reaction-show-box').hover((event)=>{
+                        const index = $('.reaction-show-box').index($(event.currentTarget))
+
+                        $('.reaction-box').eq(index).css('transform', 'translate(0, -100%)')
+                        $('.reaction-box').eq(index).css('visibility', 'visible')
+                    }, (event)=>{
+                        const index = $('.reaction-show-box').index($(event.currentTarget))
+
+                        $('.reaction-box').eq(index).css('transform', 'translate(0, -75%)')
+                        $('.reaction-box').eq(index).css('visibility', 'hidden')
+                    })
+
+                    $('.reaction-box').hover((event)=>{
+                        const index = $('.reaction-box').index($(event.currentTarget))
+
+                        $('.reaction-box').eq(index).css('transform', 'translate(0, -100%)')
+                        $('.reaction-box').eq(index).css('visibility', 'visible')
+                    }, (event)=>{
+                        const index = $('.reaction-box').index($(event.currentTarget))
+
+                        $('.reaction-box').eq(index).css('transform', 'translate(0, -75%)')
+                        $('.reaction-box').eq(index).css('visibility', 'hidden')
+                    })
+                })
+            }
+
+            function showGroups(){
+                getGroups(data => {
+                    data.doc.map(group => {
+                        const html = `
+                            <li key="${group._id}" class="my-3 d-flex align-items-center rounded cursor-pointer group-item">
+                                <img class="mr-3 rounded" width="56px" height="56px" src="${group.avatar}" alt="">
+                                ${group.name}
+                            </li>
+                        `
+                        $('.group-items').prepend(html)
+                    })
+                })
+            }
+
+            function handlePost(type, id, data, handleData){
+                return $.ajax({
+                    url: `http://localhost:3000/posts/${id}`,
+                    type: 'PUT',
+                    data: JSON.stringify({type, data}),
+                    contentType: 'application/json'
+                }).done(data => {return handleData(data)})
+            }
+
+            function updateUserByID(id, type, data, handleData){
+                $.ajax({
+                    url: `http://localhost:3000/users/${id}`,
+                    type: 'PUT',
+                    data: JSON.stringify({
+                        type,
+                        data
+                    }),
+                    contentType: 'application/json'
+                }).done(data => {handleData(data)})
+            }
+
+            function handleDate(date){
+                const now = (new Date()).getTime()
+                const secondsAgo = Math.floor((now - date) / 1000)
+                const minutesAgo = Math.floor((now - date) / 1000 / 60)
+                const hoursAgo = Math.floor((now - date) / 1000 / 60 / 60)
+                const daysAgo = Math.floor((now - date) / 1000 / 60 / 60 / 24)
+                const weeksAgo = Math.floor((now - date) / 1000 / 60 / 60 / 24 / 7)
+
+                if(weeksAgo >= 1){
+                    return `${weeksAgo} tuần`
+                }
+
+                if(daysAgo >= 1){
+                    return `${daysAgo} ngày`
+                }
+
+                if(hoursAgo >= 1){
+                    return `${hoursAgo} giờ`
+                }
+
+                if(minutesAgo >= 1 ){
+                    return `${minutesAgo} phút`
+                }
+
+                if(secondsAgo >= 1){
+                    return `${secondsAgo} giây trước`
+                }
+
+                return 'Vừa xong'
+            }
+
+            function handleFriend(friendsInfo){
+                let html = `                                                    
+                    <span class="ml-auto p-3 fs-08 text-nowrap bg-color-green-1 text-green rounded transition-03 add-friend--btn" style="border: .5px #6fbe44 solid;">
+                        <div class="add-friend-status--none">
+                            <i class="mr-3 fas fa-user-plus"></i>
+                            Kết bạn
+                        </div>
+                    </span>
+                `
+
+                friendsInfo.forEach(info => {
+                    if(info.id === userID){
+                        if(info.status === 'responding'){
+                            html = `
+                                <span class="ml-auto p-3 fs-08 text-nowrap bg-secondary border rounded transition-03 add-friend--btn" style="border: .5px #6fbe44 solid;">
+                                    <div class="add-friend-status--requesting">
+                                        <i class="mr-3 fas fa-check"></i>
+                                        Đã gửi lời mời
+                                    </div>
+                                </span>
+                            `
+                        }
+
+                        if(info.status === 'requesting'){
+                            html =  `
+                                <span class="ml-auto p-3 fs-08 text-nowrap bg-color-green-1 text-green rounded transition-03 add-friend--btn" style="border: .5px #6fbe44 solid;">
+                                    <div class="add-friend-status--responding">
+                                        <i class="mr-3 fas fa-check"></i>
+                                        Xác nhận    
+                                    </div>
+                                </span>
+                            `
+                        }
+
+                        if(info.status === true){
+                            html = ''
+                        }
+                    }
+                })
+
+                return html
+            }
+
+            function handleMessages(userID_1, userID_2, message){
+                return $.ajax({
+                    url: 'http://localhost:3000/messages',
+                    type: 'POST',
+                    data: JSON.stringify({
+                        message,
+                        userID_1,
+                        userID_2,
+                    }),
+                    contentType: 'application/json'
+                }).done(data => {return})
+            }
+
+            function handleComments(id, comment){
+                getUserByID(comment.userID, data=>{
+                    const user = data.doc
+                    const html = `
+                        <div class="d-flex">
+                            <img class="mr-2 circle border" src="${user.avatar}" alt="">
+                            <div>
+                                <div class="d-inline-block rounded bg-color-light-2" style="padding: .6rem;">
+                                    <p class="mb-2 fw-6">${user.firstName + " " + user.lastName}</p>
+                                    <span>${comment.content}</span>
+                                </div>
+                                <div>
+                                    <span class="position-relative mt-5 fs-08 cursor-pointer post-item-comments-reaction" style="margin-left: .5rem;">
+                                        Thích
+                                    </span>
+                                    <span class="fs-08 text-secondary" style="margin-left: 10px;">${handleDate(comment.timestamps)}</span>
+                                </div>
+                            </div>
+                        </div>`
+                    
+                    $(`div[key="${id}"]`).children('.post-item-comments').prepend(html)
+                })
+            }
+
+            async function showMessages(userID_1, userID_2){
+                const messageData = await handleMessages(userID_1, userID_2, "")
+                $('#friend-message-items').html('')
+
+                if(messageData.status === 'success'){
+                    messageData.doc.messages.map(messages => {
+                        $('.messages-box').attr('key', messageData.doc._id)
+
+                        if(messages.sender == userID){
+                            const html = `
+                                <div class="mr-3 my-3 ml-auto px-3 py-2 bg-color-green-2 text-light text-wrap rounded" style="max-width: 70%;">
+                                    ${messages.message}
+                                </div>
+                            `
+                            $('#friend-message-items').prepend(html)
+
+                        } else{
+                            const html = `
+                                <div class="ml-3 my-3 mr-auto px-3 py-2 bg-color-light-2 text-wrap rounded" style="max-width: 70%;">
+                                    ${messages.message}
+                                </div>
+                            `
+                            $('#friend-message-items').prepend(html)
+
+                        }
+                    })
+
+                    $('.friend-message-items--wrapped').scrollTop($('.friend-message-items--wrapped').prop('scrollHeight'))
+
+                } else{
+                    $('.messages-box').attr('key', '')
+                }
+            }
+
+            //HANDLE HEADER
+            $('.fa-search').click(()=>{
+                $('.header-search').focus()
+            })
+
+            $('.header-search').focusin(()=>{
+                $('.search--results-box').css('display', 'unset')
+            })
+
+            $('.header-search').focusout(()=>{
+                setTimeout(()=>{
+                    $('.search--results-box').css('display', 'none')
+                }, 300)
+            })
+
+            $('.header-user').click(()=>{
+                const visibility = $('.header-user-card').css('visibility')
+
+                if(visibility === 'hidden'){
+                    $('.header-user-card').css('visibility', 'visible')
+                    return
+                }
+
+                if(visibility === 'visible'){
+                    $('.header-user-card').css('visibility', 'hidden')
+                    return
+                }
+            })
+
+            $('#logout').click(()=>{
+                window.location.replace('../AccountPage/index.html')
+            })
+
+            $('.screen--dark').click(()=>{
+                $('.screen--dark').css('visibility', 'hidden')
+                $('.post-box').css('visibility', 'hidden')
+                $('.group-box').css('visibility', 'hidden')
+            })
+
+            $('.post-show-box').click(()=>{
+                $('.screen--dark').css('visibility', 'visible')
+                $('.post-box').css('visibility', 'visible')
+            })
+
+            $('.header-menu-index').click(()=>{location.reload()})
+            
+            $('.header-menu-groups').click(()=>{
+                $('.header-menu--selected').removeClass('header-menu--selected')
+                $('.header-menu-groups').addClass('header-menu--selected')
+                $('.header-menu-type--default').addClass('d-unset')
+                $('.header-menu-type--default').removeClass('d-none')
+                $('.header-menu-type--active').addClass('d-none')
+                $('.header-menu-type--active').removeClass('d-unset')
+                $('.header-menu-groups').children().children().children('.header-menu-type--default').addClass('d-none')
+                $('.header-menu-groups').children().children().children('.header-menu-type--active').removeClass('d-none')
+                $('.header-menu-groups').children().children().children('.header-menu-type--active').addClass('d-unset')
+                
+                const html = `
+                    <h3 class="mt-3 p-3">Nhóm</h3>
+                    <div class="m-3 p-3 d-flex align-items-center rounded hover-gray bg-color-green-1 text-success fw-6 transition-03 cursor-pointer">
+                        <img class="mr-3" src="https://www.gapo.vn/assets/icons/Frame%20988.svg" alt="">
+                        Bảng tin của bạn
+                    </div>
+                    <div class="m-3 p-3 d-flex align-items-center rounded hover-gray bg-white text-secondary fw-6 transition-03 cursor-pointer">
+                        <img class="mr-3" src="https://www.gapo.vn/assets/icons/Frame%20988%20(1).svg" alt="">
+                        Khám phá
+                    </div>
+                    <div class="m-3 p-3 d-flex justify-content-center align-items-center rounded bg-white text-secondary transition-03 cursor-pointer create-group--btn">
+                        <img class="mr-3" src="https://www.gapo.vn/assets/icons/plus-create-make.svg" alt="">
+                        Tạo nhóm mới
+                    </div>
+
+                    <div class="my-5 mx-3 border"></div>
+
+                    <div class="m-3 pt-0 pb-3 px-3">
+                        <p class="fw-6">Nhóm bạn tham gia</p>
+
+                        <ul class="py-3 d-flex flex-column group-items">
+                            <li class="my-3 d-flex align-items-center rounded cursor-pointer group-item">
+                                <img class="mr-3 rounded" src="https://cdn-thumb-image-5.gapo.vn/56x56/smart/502726b8-3f51-41cc-9511-32c5d3b650d2.jpeg" alt="">
+                                Box Girl ❤
+                            </li>
+                        </ul>
+                    </div>
+                `
+
+                $('.main-side--right').html(html)
+
+                showGroups()
+            })
+
+            $(document).on('click', '.create-group--btn', ()=>{
+                $('.screen--dark').css('visibility', 'visible')
+                $('.group-box').css('visibility', 'visible')
+            })
+
+            //GROUPS
+            $('#group-btn').click(()=>{
+                const name = $('#group-name').val()
+                const description = $('#group-description').val()
+
+                if(!name){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="alert alert-warning w-75 position-absolute top-10px left-50 translate-x-50 z-index-999">
+                            Chưa nhập tên nhóm.
+                        </div>
+                    `)
+                    return
+                }
+
+                $.ajax({
+                    url: 'http://localhost:3000/groups',
+                    type: 'POST',
+                    data: JSON.stringify({
+                        name,
+                        description,
+                        posts: [],
+                        avatar: 'https://www.gapo.vn/assets/icons/group-active.svg'
+                    }),
+                    contentType: 'application/json'
+                }).done(data => {location.reload()})
+            })
+
+            //POSTS
+            $('#post-btn').click(()=>{
+                const userID = localStorage.getItem('_id')
+                const content = $('#post-content').val()
+                const timestamps = (new Date()).getTime()
+                const groupID = $('.group--selected').attr('id')
+                
+                if(!userID || !content){
+                    return
+                }
+
+                $.ajax({
+                    url: 'http://localhost:3000/posts',
+                    type: 'POST',
+                    data: JSON.stringify({
+                        userID,
+                        content,
+                        timestamps,
+                        reaction: {
+                            like: [],
+                            love: [],
+                            haha: [],
+                            wow: [],
+                            sad: [],
+                            angry: []
+                        },
+                        comments: []
+                    }),
+                    contentType: 'application/json'
+                }).done((data)=>{
+                    const post = data.doc
+
+                    if(groupID){
+                        $.ajax({
+                            url: `http://localhost:3000/groups/${groupID}`,
+                            type: "PUT",
+                            data: JSON.stringify({
+                                postID: post._id
+                            }),
+                            contentType: 'application/json'
+                        }).done(data => {return location.reload()})
+                    }
+
+                    return location.reload()
+                })
+            })
+
+            $('.group-list--show').click(()=>{
+                $('.group-list--items').removeClass('d-none')
+                $('.group-list--items').html(`
+                    <div key="" class="p-3 d-flex align-items-center rounded hover-gray transition-03 cursor-pointer group-list--item">
+                        -- Nhóm --
+                    </div>
+                `)
+                getGroups(data => {
+                    data.doc.map(group => {
+                        const html = `
+                            <div key="${group._id}" class="p-3 d-flex align-items-center rounded hover-gray transition-03 cursor-pointer group-list--item">
+                                <img class="mr-2" width="30px" src="${group.avatar}" alt="">
+                                ${group.name}
+                            </div>
+                        `
+                        $('.group-list--items').append(html)
+                    })
+                })
+            })
+
+            $(document).on('click', '.group-list--item', (event)=>{
+                const id = $(event.currentTarget).attr('key')
+
+                if(id){
+                    getGroupByID(id, data => {
+                        const group = data.doc
+                        const html = `
+                            <div class="p-3 d-flex align-items-center rounded bg-color-light-1 transition-03 cursor-pointer">
+                                <img class="mr-2" width="30px" src="${group.avatar}" alt="">
+                                ${group.name}
+                            </div>
+                        `
+
+                        $('.group--selected').html(html)
+                        $('.group--selected').attr('id', group._id)
+                        $('.group--selected').removeClass('d-none')
+                    })
+
+                    return
+                }
+
+                $('.group--selected').removeClass('d-none')
+                $('.group--selected').addClass('d-none')
+            })
+
+            //HANDLE TENDENCY
+            let rightSlideTendency = 0
+            let leftSlideTendency = 0
+            $('.post-tendency-slide--right').click(()=>{
+                if(rightSlideTendency){
+                    rightSlideTendency = clearTimeout(rightSlideTendency)
+                }
+
+                rightSlideTendency = setTimeout(()=>{
+                    const currentWidth = $('.post-tendency-slide')[0].offsetWidth
+                    const currentMarginLeft =  $('.post-tendency-slide').css('margin-left')
+                    const translateY = $('.post-tendency-item').css('width') 
+
+                    if(+currentMarginLeft.match(/\d+/)[0] < currentWidth){
+                        $('.post-tendency-slide--left').css('pointer-events', 'unset')
+                        $('.post-tendency-slide').css('margin-left', `calc(${currentMarginLeft} - (${translateY} + 8px))`)
+                        return
+                    }
+
+                    $('.post-tendency-slide--right').css('pointer-events', 'none')
+                }, 300)
+            })
+            $('.post-tendency-slide--left').click(()=>{
+                if(leftSlideTendency){
+                    leftSlideTendency = clearTimeout(leftSlideTendency)
+                }
+
+                leftSlideTendency = setTimeout(()=>{
+                    const currentMarginLeft =  $('.post-tendency-slide').css('margin-left')
+                    const translateY = $('.post-tendency-item').css('width') 
+
+                    if(+currentMarginLeft.match(/\d+/)[0] > 0){
+                        $('.post-tendency-slide--right').css('pointer-events', 'unset')
+                        $('.post-tendency-slide').css('margin-left', `calc(${currentMarginLeft} + (${translateY} + 8px))`)
+                        return
+                    }
+
+                    $('.post-tendency-slide--left').css('pointer-events', 'none')
+                }, 300)
+            })
+
+            //HANDLE REACTION
+            $(document).on('click', '.reaction-like', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const index = $('.reaction-like').index($(event.currentTarget))
+
+                $('.reaction-show-box').eq(index).css('color', '#6fbe44')
+                $('.reaction-show-box').eq(index).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                    Thích
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    type: 'like',
+                    status: true
+                }, data => {return})
+
+            })
+            $(document).on('click', '.reaction-love', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const index = $('.reaction-love').index($(event.currentTarget))
+
+                $('.reaction-show-box').eq(index).css('color', '#6fbe44')
+                $('.reaction-show-box').eq(index).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/love-reaction.png" alt="">
+                    Love
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    type: 'love',
+                    status: true
+                }, data => {return})
+
+            })
+            $(document).on('click', '.reaction-haha', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const index = $('.reaction-haha').index($(event.currentTarget))
+
+                $('.reaction-show-box').eq(index).css('color', '#6fbe44')
+                $('.reaction-show-box').eq(index).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/haha-reaction.png" alt="">
+                    Haha
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    type: 'haha',
+                    status: true
+                }, data => {return})
+
+            })
+            $(document).on('click', '.reaction-wow', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const index = $('.reaction-wow').index($(event.currentTarget))
+
+                $('.reaction-show-box').eq(index).css('color', '#6fbe44')
+                $('.reaction-show-box').eq(index).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/wow-reaction.png" alt="">
+                    Wow
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    type: 'wow',
+                    status: true
+                }, data => {return})
+
+            })
+            $(document).on('click', '.reaction-sad', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const index = $('.reaction-sad').index($(event.currentTarget))
+
+                $('.reaction-show-box').eq(index).css('color', '#6fbe44')
+                $('.reaction-show-box').eq(index).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/sad-reaction.png" alt="">
+                    Sad
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    type: 'sad',
+                    status: true
+                }, data => {return})
+
+            })
+            $(document).on('click', '.reaction-angry', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const index = $('.reaction-angry').index($(event.currentTarget))
+
+                $('.reaction-show-box').eq(index).css('color', '#6fbe44')
+                $('.reaction-show-box').eq(index).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/angry-reaction.png" alt="">
+                    Angry
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    type: 'angry',
+                    status: true
+                }, data => {return})
+
+            })
+            $(document).on('click', '.reaction-show-box', (event)=>{
+                const id = $('.reaction-show-box').parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+
+                $(event.currentTarget).css('color', 'unset')
+                $(event.currentTarget).html(`
+                    <img class="mr-3 circle-auto" src="http://gapo.vn/assets/images/png-icons/like-reaction.png" alt="">
+                    Thích
+                `)
+
+                handlePost('reaction', id, {
+                    userID,
+                    status: false
+                }, data => {return})
+            })
+
+            //HANDLE COMMENT
+            $(document).on('click', '.post-item-comment-send', (event)=>{
+                const id = $(event.currentTarget).parents('.post-item').attr('key')
+                const userID = localStorage.getItem('_id')
+                const content = $(event.currentTarget).parent().children('.post-item-comment-content').val()
+                const timestamps = (new Date()).getTime()
+
+                handlePost('comment', id, {
+                    userID,
+                    content,
+                    timestamps
+                }, (data)=>{
+                    return
+                })
+
+                location.reload()
+            })
+
+            //HANDLE GROUPS
+            $(document).on('click', '.group-item', (event)=>{
+                const id = $(event.currentTarget).attr('key')
+
+                getGroupByID(id, (data)=>{
+                    if(data.status === 'success'){
+                        data.doc.posts.length > 0 ? data.doc.posts.map(postID => {
+                            getPostByID(postID, (data)=>{
+                                if(data.status === 'success'){
+                                    const post = data.doc
+                                    $('.post-items').html('')
+                                    showPost(post)
+                            }
+                        })
+                    }) : $('.post-items').html('')
+                    }
+                })
+            })
+
+            getUserByID(userID, (data)=>{
+                $('.username').html(`${data.doc.firstName} ${data.doc.lastName}`)
+                data.doc.friends.map(friendsInfo => {
+                    if(friendsInfo.status === true){
+                        getUserByID(friendsInfo.id, data => {
+                            const user = data.doc
+                            const html = `
+                                <div key="${user._id}" class="mb-1 p-2 d-flex align-items-center rounded hover-gray cursor-pointer friend-message">
+                                    <img class="circle mr-3 border" src="${user.avatar}" alt="">
+                                    <span class="fw-6">${user.firstName} ${user.lastName}</span>
+                                </div>
+                            `
+
+                            $('.users-list').append(html)
+                        })
+                    }
+                    
+                    if(friendsInfo.status === 'responding'){
+                        $('.friend-contact').before(`
+                            <div class="p-3 fw-6 text-secondary">Lời mời kết bạn</div>
+                            <div class="friend-requesting-items text-secondary"></div>
+                            <div class="m-3 border"></div>
+                        `)
+
+                        getUserByID(friendsInfo.id, data => {
+                            const user = data.doc
+                            const html = `
+                                <div key="${user._id}" class="mb-1 p-2 d-flex align-items-center rounded hover-gray cursor-pointer user--info">
+                                    <img class="circle mr-3 border" src="${user.avatar}" alt="">
+                                    <span class="fw-6">${user.firstName} ${user.lastName}</span>
+                                    ${handleFriend(user.friends)}
+                                </div>
+                            `
+
+                            $('.friend-requesting-items').append(html)
+                        })
+                    }
+                })
+
+            })
+            
+            getPosts(data => {
+                data.doc.map(post => showPost(post))
+            })
+        
+            //HANDLE SEARCH
+            let handleTimeOut = 0
+            $('.header-search').on('input', ()=>{
+                if(handleTimeOut){
+                    handleTimeOut = clearTimeout(handleTimeOut)
+                }
+
+                handleTimeOut = setTimeout(()=>{
+                    const searchValue = $('.header-search').val().toLowerCase()
+                    if(searchValue){
+                        $('.search--results').html('')
+                        getUsers(data => {
+                            if(data.status === 'success'){
+                                data.doc.map(user => {
+                                    if(user._id === userID){
+                                        return
+                                    }
+
+                                    if(user.firstName.toLowerCase().includes(searchValue) || user.lastName.toLowerCase().includes(searchValue) || user.email.toLowerCase().includes(searchValue)){
+                                        const html = `
+                                            <div key="${user._id}" class="mb-1 p-2 d-flex align-items-center rounded hover-gray cursor-pointer user--info">
+                                                <img class="circle mr-3 border" src="${user.avatar}" alt="">
+                                                <span class="fw-6">${user.firstName} ${user.lastName}</span>
+                                                ${handleFriend(user.friends)}
+                                            </div>
+                                        `
+                            
+                                        $('.search--results').append(html)
+                                    }
+                                })
+
+                                if($('.search--results').children().length === 0){
+                                    $('.search--results').html('Không tìm thấy kết quả')
+                                }
+                            }
+                        })
+                    } else{
+                        $('.search--results').html('Không tìm thấy kết quả')
+                    }
+                }, 300)
+            })
+        
+            $(document).on('click', '.add-friend--btn', (event)=>{
+                const id = $(event.currentTarget).parents('.user--info').attr('key')
+                const status = $(event.currentTarget).children().attr('class')
+
+                if(status.includes('responding')){
+                    updateUserByID(userID, 'friends', {
+                        id,
+                        status: true
+                    }, data => {return})
+
+                    updateUserByID(id, 'friends', {
+                        id: userID,
+                        status: true
+                    }, data => {return})
+                }
+
+                if(status.includes('requesting')){
+                    updateUserByID(userID, 'friends', {
+                        id,
+                        status: false
+                    }, data => {return})
+
+                    updateUserByID(id, 'friends', {
+                        id: userID,
+                        status: false
+                    }, data => {return})
+                }
+
+                if(status.includes('none')){
+                    updateUserByID(userID, 'friends', {
+                        id,
+                        status: 'requesting'
+                    }, data => {return})
+
+                    updateUserByID(id, 'friends', {
+                        id: userID,
+                        status: 'responding'
+                    }, data => {return})
+                }
+
+                location.reload()
+            })
+
+            //HANDLE MESSAGES
+            $(document).on('click', '.friend-message', (event)=>{
+                const userID_1 = userID
+                const userID_2 = $(event.currentTarget).attr('key')
+
+                getUserByID(userID_2, userData => {
+                    if(userData.status === 'success'){
+                        const friendInfo = userData.doc
+                        const html = `
+                            <img class="mr-2 circle circle-sm border" src="${friendInfo.avatar}">
+                            <div class="cursor-pointer">${friendInfo.firstName} ${friendInfo.lastName}</div>
+                            <i class="ml-auto fs-15 fas fa-times cursor-pointer messages-hidden"></i>
+                        `
+                        $('#friend-info').attr('key', friendInfo._id)
+                        $('#friend-info').html(html)
+
+                        $('.messages-box').removeClass('d-none')
+                    }
+                })
+                
+                showMessages(userID_1, userID_2)
+            })
+
+            $('#message-send').click(async ()=>{
+                const content = $('#message-content').val()
+
+                if(content){
+                    const friendID = $('#friend-info').attr('key')
+                    const id = $('.messages-box').attr('key')
+
+                    if(id){
+                        await $.ajax({
+                            url: `http://localhost:3000/messages/${id}`,
+                            type: 'PUT',
+                            data: JSON.stringify({
+                                sender: userID,
+                                message: content
+                            }),
+                            contentType: 'application/json'
+                        }).done(data => {return})
+                    } else{
+                        handleMessages(userID, friendID, content)
+                    }
+
+                    $('#message-content').val("")
+                    showMessages(userID, friendID)
+                }
+            })
+
+            $(document).on('click', '.messages-hidden', ()=>{
+                $('.messages-box').addClass('d-none')
+            })
+        })
+    </script>
+</body>
+</html>

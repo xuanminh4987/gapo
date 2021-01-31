@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../libs/m-style/style.css">
+    <title>Gapo</title>
+</head>
+<body>
+    <div class="container h-view">
+        <div class="d-flex justify-content-center h-100">
+            <div class="h-100 m-0 pb-5 px-5">
+                <div class="card login-logo">
+                    <img src="https://www.gapo.vn/assets/images/logo%20gapo.svg" alt="">
+                </div>
+                <div class="card login-content">
+                    <h1>Xin chào Gapoer!</h1>
+                </div>
+                <form class="card login-form">
+                    <input id="login-email" type="text" class="form-control mb-3" placeholder="Email">
+                    <input id="login-password" type="password" class="form-control mb-3" placeholder="Mật khẩu">
+                    <button id="login" class="form-control mb-3 bg-primary cursor-pointer">Đăng nhập</button>
+                    <div class="text-center">                        
+                        <a href="#" class="text-primary">Quên mật khẩu?</a>
+                    </div>
+                    <div class="border mb-3 mt-3"></div>
+                    <button id="signup-page" type="button" class="form-control bg-success cursor-pointer">Đăng ký</button>
+                </form>
+            </div>
+
+            <div class="m-0 bg-success background">
+                <img class="w-100" src="../../assets/images/accountBG.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="../../libs/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(()=>{
+            //  FUNCTION
+            function handleUser(type, userInfo, handleData){
+                $.ajax({
+                    url: 'http://localhost:3000/users',
+                    type: 'POST',
+                    data: JSON.stringify({type, userInfo}),
+                    contentType: 'application/json'
+                }).done(data => handleData(data))
+            }
+
+            // LOGIN
+            $('#login').click((e)=>{
+                e.preventDefault()
+
+                const email = $('#login-email').val()
+                const password = $('#login-password').val()
+                
+                if(!email){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập Email.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                if(!password){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập mật khẩu.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+ 
+                handleUser('login', {email, password}, (data)=>{
+                    if(data.status === 'failed'){
+                        $('.alert').remove()
+                        $('.container').prepend(`
+                            <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                                <div class="alert alert-danger w-75">${data.message}</div>
+                            </div>                        
+                        `)
+                        return
+                    }
+
+                    localStorage.setItem('_id', data.doc._id)
+                    window.location.replace('../HomePage/index.html')
+                })
+            })
+
+            //  SIGNUP
+            $(document).on('click', '#signup', ((e)=>{
+                e.preventDefault()
+
+                const firstName = $('#first-name').val()
+                const lastName = $('#last-name').val()
+                const email = $('#signup-email').val()
+                const password = $('#signup-password').val()
+                const birthday = $('#day').val() + '-' + $('#month').val() + '-' + $('#year').val()
+                const gender = $('input[name="gender"]:checked').val()
+                
+                if(!firstName){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập họ.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                if(!lastName){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập tên.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                if(!email){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập Email.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                if(!password){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập mật khẩu.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                if(!birthday){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập ngày sinh.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                if(!gender){
+                    $('.alert').remove()
+                    $('.container').prepend(`
+                        <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                            <div class="alert alert-warning w-75">Bạn chưa nhập giới tính.</div>
+                        </div>                    
+                    `)
+                    return
+                }
+
+                handleUser('signup', {
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    birthday,
+                    gender,
+                    friends: [],
+                    avatar: 'data:image/png;base64,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'
+                }, (data)=>{
+                    if(data.status === 'failed'){
+                        $('.alert').remove()
+                        $('.container').prepend(`
+                            <div class="w-100 d-flex justify-content-center position-absolute top-10px">
+                                <div class="alert alert-danger w-75">${data.message}</div>
+                            </div>
+                        `)
+                        return
+                    }
+
+                    location.reload()
+                })
+            }))
+
+            //TOGGLE LOG-IN/SIGN-UP
+            $('#signup-page').click(()=>{
+                $('.login-form').html(`
+                    <div class="border mb-3 mt-3"></div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input id="first-name" type="text" class="form-control bg-color-light-1" placeholder="Họ">
+                        </div>
+                        <div class="col">
+                            <input id="last-name" type="text" class="col form-control bg-color-light-1" placeholder="Tên">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <input id="signup-email" type="email" class="form-control bg-color-light-1" placeholder="Email">
+                    </div>
+                    <div class="row mb-3">
+                        <input id="signup-password" type="password" class="form-control bg-color-light-1" placeholder="Mật khẩu mới">
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <p class="text-secondary">Ngày sinh</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <select id="day" class="form-control">
+                                    <option selected value="">Ngày</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">14</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select id="month" class="form-control">
+                                    <option selected value="">Tháng</option>
+                                    <option value="JAN">Tháng 1</option>
+                                    <option value="FEB">Tháng 2</option>
+                                    <option value="MAR">Tháng 3</option>
+                                    <option value="APR">Tháng 4</option>
+                                    <option value="MAY">Tháng 5</option>
+                                    <option value="JUN">Tháng 6</option>
+                                    <option value="JUL">Tháng 7</option>
+                                    <option value="AUG">Tháng 8</option>
+                                    <option value="SEP">Tháng 9</option>
+                                    <option value="OCT">Tháng 10</option>
+                                    <option value="NOV">Tháng 11</option>
+                                    <option value="DEC">Tháng 12</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select id="year" class="form-control">
+                                    <option selected value="">Năm</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <p class="text-secondary">Giới tính</p>
+                        </div>
+                        <div class="row">
+                            <div class="col position-relative">
+                                <label class="form-control d-flex align-items-center">Nam</label>
+                                <input type="radio" name="gender" value="Male" class="position-absolute top-50 right-10px translate-y-50">
+                            </div>
+                            <div class="col position-relative">
+                                <label class="form-control d-flex align-items-center">Nữ</label>
+                                <input type="radio" name="gender" value="Female" class="position-absolute top-50 right-10px translate-y-50">
+                            </div>
+                            <div class="col position-relative">
+                                <label class="form-control d-flex align-items-center">Tùy chọn</label>
+                                <input type="radio" name="gender" value="Option" class="position-absolute top-50 right-10px translate-y-50">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <p class="text-secondary text-wrap">
+                            Bằng cách nhấp vào Đăng ký, 
+                            bạn đồng ý với <a href="#">Điều khoản</a>, 
+                            <a href="#">Chính sách dữ liệu</a> 
+                            và <a href="#">Chính sách cookie</a> của chúng tôi. Bạn có thể nhận được thông báo của chúng tôi qua SMS và hủy nhận bất kỳ lúc nào.
+                        </p>
+                    </div>
+                    <div class="row mb-3">
+                        <button id="signup"  class="form-control bg-success cursor-pointer">Đăng ký</button>
+                    </div>
+                    <div class="border mb-3 mt-3"></div>
+                    <div class="row mb-3">
+                        <button id="login-page" class="form-control bg-primary cursor-pointer">Đăng nhập</button>
+                    </div>    
+                `)
+            
+                $('.login-content').html(`
+                    <h1 class="mb-2"><b>Trở thành Gapoer?</b></h1>
+                    <p class="text-secondary">Nhanh chóng và dễ dàng.</p>
+                `)
+
+                $('.login-content').css('margin-bottom', "0")
+            })
+
+        })
+    </script>
+</body>
+</html>
+
+
+
